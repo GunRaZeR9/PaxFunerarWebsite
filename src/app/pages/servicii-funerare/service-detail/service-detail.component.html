@@ -1,0 +1,59 @@
+@if (service(); as s) {
+  <section class="detail-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Navigare">
+        <a routerLink="/">Acasă</a>
+        <span aria-hidden="true">›</span>
+        <a routerLink="/servicii-funerare">Servicii Funerare</a>
+        <span aria-hidden="true">›</span>
+        <span>{{ s.name }}</span>
+      </nav>
+      <h1 class="detail-title reveal-hidden">{{ s.name }}</h1>
+      <p class="detail-teaser reveal-hidden">{{ s.teaser }}</p>
+    </div>
+  </section>
+
+  <section class="detail-body">
+    <div class="container detail-grid" paxRevealOnScroll>
+      <div class="detail-content">
+        <p class="detail-description">{{ s.description }}</p>
+
+        @if (s.benefits.length) {
+          <h2 class="benefits-title">Ce includem</h2>
+          <ul class="benefits-list">
+            @for (b of s.benefits; track b) {
+              <li>
+                <span class="benefit-check" aria-hidden="true">✓</span> {{ b }}
+              </li>
+            }
+          </ul>
+        }
+      </div>
+
+      <aside class="detail-cta-box">
+        <h3>Aveți nevoie de ajutor?</h3>
+        <p>Suntem disponibili non-stop. Contactați-ne acum.</p>
+        <a
+          routerLink="/contact"
+          [queryParams]="{ service: s.slug }"
+          class="cta-btn-primary"
+        >
+          {{ s.ctaLabel || 'Solicită Serviciul' }}
+        </a>
+        <a href="tel:0745547530" class="cta-btn-ghost">☎ 0745 547 530</a>
+        <a href="tel:0745647530" class="cta-btn-ghost">☎ 0745 647 530</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="back-section">
+    <div class="container">
+      <a routerLink="/servicii-funerare" class="back-link">← Toate serviciile funerare</a>
+    </div>
+  </section>
+} @else {
+  <div class="container not-found">
+    <h1>Serviciu negăsit</h1>
+    <a routerLink="/servicii-funerare" class="cta-btn-primary">← Înapoi la servicii</a>
+  </div>
+}

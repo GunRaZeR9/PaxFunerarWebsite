@@ -1,0 +1,37 @@
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-hero-title reveal-hidden">Servicii Funerare</h1>
+    <p class="page-hero-desc reveal-hidden">
+      Casa Funerară PAX oferă servicii complete, cu respect și demnitate, non-stop în Târgu Mureș.
+    </p>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="container">
+    <div class="services-grid">
+      @for (service of services; track service.slug) {
+        <pax-service-card
+          [card]="service"
+          (openModal)="openModal($event)"
+          paxRevealOnScroll
+        />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner" paxRevealOnScroll>
+  <div class="container cta-inner">
+    <div>
+      <h2>Suntem alături de dumneavoastră non-stop</h2>
+      <p>Apelați-ne oricând. Preluăm imediat.</p>
+    </div>
+    <a href="tel:0745547530" class="cta-btn-primary">☎ 0745 547 530</a>
+  </div>
+</section>
+
+<pax-service-detail-modal
+  [service]="activeService()"
+  (closed)="closeModal()"
+/>

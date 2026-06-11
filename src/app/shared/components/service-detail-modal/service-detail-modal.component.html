@@ -1,0 +1,46 @@
+@if (service()) {
+  <div
+    class="modal-overlay"
+    (click)="onOverlayClick($event)"
+    (keydown)="onKeydown($event)"
+    tabindex="-1"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="modal-panel"
+    role="dialog"
+    [attr.aria-label]="service()!.name"
+    (keydown)="onKeydown($event)"
+    tabindex="0"
+  >
+    <button class="modal-close" type="button" (click)="close()" aria-label="Închide">✕</button>
+
+    <div class="modal-body">
+      <h2 class="modal-title">{{ service()!.name }}</h2>
+      <p class="modal-description">{{ service()!.description }}</p>
+
+      @if (service()!.benefits.length) {
+        <ul class="modal-benefits">
+          @for (b of service()!.benefits; track b) {
+            <li>
+              <span class="benefit-check" aria-hidden="true">✓</span> {{ b }}
+            </li>
+          }
+        </ul>
+      }
+    </div>
+
+    <div class="modal-footer">
+      <a
+        routerLink="/contact"
+        [queryParams]="{ service: service()!.slug }"
+        class="cta-btn-primary"
+        (click)="close()"
+      >
+        {{ service()!.ctaLabel || 'Solicită Serviciul' }}
+      </a>
+      <a href="tel:0745547530" class="cta-btn-ghost">☎ 0745 547 530</a>
+    </div>
+  </div>
+}

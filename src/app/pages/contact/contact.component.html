@@ -1,0 +1,152 @@
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-hero-title reveal-hidden">Contact</h1>
+    <p class="reveal-hidden">Suntem disponibili non-stop. Contactați-ne oricând.</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container contact-grid">
+
+    <div class="contact-info" paxRevealOnScroll>
+      <h2>Informații Contact</h2>
+
+      <div class="info-item">
+        <span class="info-icon" aria-hidden="true">📞</span>
+        <div>
+          <strong>Telefon (non-stop)</strong>
+          <a href="tel:0745547530">0745 547 530</a>
+          <a href="tel:0745647530">0745 647 530</a>
+          <a href="tel:0741115864">0741 115 864 (floral)</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="info-icon" aria-hidden="true">✉️</span>
+        <div>
+          <strong>Email</strong>
+          <a href="mailto:contact@paxfunerar.ro">contact&#64;paxfunerar.ro</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="info-icon" aria-hidden="true">📍</span>
+        <div>
+          <strong>Adresă</strong>
+          <span>Strada Alexandru Papiu Ilarian 10</span>
+          <span>Târgu Mureș, Mureș</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="info-icon" aria-hidden="true">🕐</span>
+        <div>
+          <strong>Program</strong>
+          <span>Non-stop, 24/7, 365 de zile pe an</span>
+        </div>
+      </div>
+
+      <a
+        href="https://wa.me/40745547530"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp-btn"
+      >
+        💬 WhatsApp
+      </a>
+    </div>
+
+    <div class="contact-form-wrap" paxRevealOnScroll [revealDelay]="100">
+      @if (submitted()) {
+        <div class="success-msg">
+          <span aria-hidden="true">✓</span>
+          <h3>Mesaj trimis cu succes!</h3>
+          <p>Vă vom contacta în cel mai scurt timp posibil.</p>
+        </div>
+      } @else {
+        <form [formGroup]="form" (ngSubmit)="submit()" class="contact-form" novalidate>
+          <h2>Trimite un mesaj</h2>
+
+          <!-- Honeypot — hidden from users -->
+          <div class="hp-field" aria-hidden="true">
+            <input formControlName="hp" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="name">Nume <span aria-hidden="true">*</span></label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              autocomplete="name"
+              placeholder="Numele dumneavoastră"
+              [class.invalid]="form.controls.name.invalid && form.controls.name.touched"
+            >
+            @if (form.controls.name.invalid && form.controls.name.touched) {
+              <span class="field-error">Introduceți numele (minim 2 caractere)</span>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              placeholder="email@exemplu.ro"
+              [class.invalid]="form.controls.email.invalid && form.controls.email.touched"
+            >
+            @if (form.controls.email.invalid && form.controls.email.touched) {
+              <span class="field-error">Introduceți o adresă de email validă</span>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input
+              id="phone"
+              type="tel"
+              formControlName="phone"
+              autocomplete="tel"
+              placeholder="07xx xxx xxx"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="service">Serviciu solicitat</label>
+            <select id="service" formControlName="service">
+              <option value="">— Alegeți un serviciu —</option>
+              @for (opt of serviceOptions; track opt.slug) {
+                <option [value]="opt.slug">{{ opt.name }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mesaj <span aria-hidden="true">*</span></label>
+            <textarea
+              id="message"
+              formControlName="message"
+              rows="5"
+              placeholder="Descrieți situația sau întrebarea dumneavoastră..."
+              [class.invalid]="form.controls.message.invalid && form.controls.message.touched"
+            ></textarea>
+            @if (form.controls.message.invalid && form.controls.message.touched) {
+              <span class="field-error">Introduceți un mesaj (minim 10 caractere)</span>
+            }
+          </div>
+
+          <button
+            type="submit"
+            class="cta-btn-primary"
+            [disabled]="sending()"
+          >
+            {{ sending() ? 'Se trimite...' : 'Trimite Mesajul' }}
+          </button>
+        </form>
+      }
+    </div>
+
+  </div>
+</section>

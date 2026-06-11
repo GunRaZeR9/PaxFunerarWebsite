@@ -1,0 +1,81 @@
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-hero-title reveal-hidden">Magazin Funerar</h1>
+    <p class="page-hero-desc reveal-hidden">
+      Produse funerare de calitate — lumânări, coroane, urne, fotoceramică și accesorii.
+    </p>
+  </div>
+</section>
+
+<section class="shop-section" paxRevealOnScroll>
+  <div class="container">
+    <div class="category-filters">
+      @for (cat of categories; track cat.id) {
+        <button
+          type="button"
+          class="filter-btn"
+          [class.active]="activeCategory() === cat.id"
+          (click)="setCategory(cat.id)"
+        >{{ cat.label }}</button>
+      }
+    </div>
+
+    <div class="products-grid">
+      @for (product of filteredProducts(); track product.id) {
+        <article class="product-card" (click)="openProduct(product)" role="button" tabindex="0"
+          (keydown.enter)="openProduct(product)">
+          <div class="product-image-wrap">
+            <div class="product-image-placeholder" aria-hidden="true">📦</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">{{ product.name }}</h3>
+            <p class="product-short">{{ product.shortDesc }}</p>
+            <div class="product-footer">
+              <span class="product-price">{{ product.price | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+              <button
+                type="button"
+                class="add-btn"
+                (click)="addToCartDirect(product, $event)"
+                [attr.aria-label]="'Adaugă în coș ' + product.name"
+              >+</button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Product detail modal -->
+@if (activeProduct(); as p) {
+  <div
+    class="product-modal-overlay"
+    (click)="onOverlayClick($event)"
+    (keydown)="onKeydown($event)"
+    tabindex="-1"
+    aria-hidden="true"
+  ></div>
+
+  <div class="product-modal-panel" role="dialog" [attr.aria-label]="p.name" tabindex="0" (keydown)="onKeydown($event)">
+    <button class="modal-close" type="button" (click)="closeProduct()" aria-label="Închide">✕</button>
+
+    <div class="product-modal-body">
+      <div class="product-modal-image" aria-hidden="true">📦</div>
+      <div class="product-modal-info">
+        <h2>{{ p.name }}</h2>
+        <p class="product-modal-price">{{ p.price | currency:'RON':'symbol':'1.0-0':'ro' }} RON</p>
+        <p>{{ p.description }}</p>
+
+        <div class="qty-row">
+          <button type="button" class="qty-btn" (click)="decrement()" aria-label="Scade cantitate">−</button>
+          <span class="qty-val" aria-live="polite">{{ productQty() }}</span>
+          <button type="button" class="qty-btn" (click)="increment()" aria-label="Crește cantitate">+</button>
+        </div>
+
+        <button type="button" class="cta-btn-primary full-w" (click)="addToCart(p)">
+          Adaugă în coș — {{ p.price * productQty() | currency:'RON':'symbol':'1.0-0':'ro' }} RON
+        </button>
+      </div>
+    </div>
+  </div>
+}

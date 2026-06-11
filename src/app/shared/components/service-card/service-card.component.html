@@ -1,0 +1,19 @@
+<article
+  class="service-card"
+  (click)="open()"
+  (keydown.enter)="open()"
+  (keydown.space)="open()"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="'Detalii despre ' + card().name"
+>
+  <div class="card-icon">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <rect width="48" height="48" rx="10" fill="rgba(201,169,110,0.12)"/>
+      <path d="M14 24h20M24 14v20" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <h3 class="card-name">{{ card().name }}</h3>
+  <p class="card-teaser">{{ card().teaser }}</p>
+  <span class="card-link" aria-hidden="true">Află mai mult →</span>
+</article>
