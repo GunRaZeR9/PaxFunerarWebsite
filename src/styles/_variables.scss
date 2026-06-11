@@ -1,0 +1,64 @@
+// ============================================
+// PAX Funerar — Design Tokens
+// ============================================
+
+// Breakpoints (mobile-first, min-width)
+$bp-sm:  480px;   // large phones
+$bp-md:  768px;   // tablets
+$bp-lg:  1024px;  // small desktops
+$bp-xl:  1280px;  // standard desktops
+$bp-2xl: 1536px;  // wide screens
+
+// Fonts
+$font-heading: 'Playfair Display', Georgia, serif;
+$font-body:    'Inter', -apple-system, sans-serif;
+
+:root {
+  // Primary — Deep Charcoal / Near-Black
+  --color-bg-primary:       #0f0f0f;   // page background
+  --color-bg-secondary:     #1a1a1a;   // cards, sections
+  --color-bg-tertiary:      #242424;   // elevated surfaces, hover
+
+  // Gold Accent (trust, premium, dignity)
+  --color-accent:           #c9a96e;   // primary CTA buttons, highlights
+  --color-accent-light:     #e8c99a;   // hover state
+  --color-accent-muted:     #8a6d3b;   // secondary accent
+
+  // Text
+  --color-text-primary:     #f5f0e8;   // headings (warm white)
+  --color-text-secondary:   #b8b0a4;   // body text
+  --color-text-muted:       #6b6560;   // captions, labels
+
+  // Functional
+  --color-border:           #2e2e2e;
+  --color-border-accent:    rgba(201, 169, 110, 0.3);
+  --color-success:          #4a7c59;
+  --color-error:            #8b3a3a;
+
+  // Gradients
+  --gradient-hero: linear-gradient(160deg, #0f0f0f 0%, #1e1710 100%);
+  --gradient-card: linear-gradient(180deg, #1a1a1a 0%, #111111 100%);
+
+  // Type scale (mobile-first)
+  --text-xs:    0.75rem;   // 12px
+  --text-sm:    0.875rem;  // 14px
+  --text-base:  1rem;      // 16px — minimum body
+  --text-lg:    1.125rem;  // 18px
+  --text-xl:    1.25rem;   // 20px
+  --text-2xl:   1.5rem;    // 24px
+  --text-3xl:   1.875rem;  // 30px
+  --text-4xl:   2.25rem;   // 36px
+  --text-5xl:   3rem;      // 48px — hero heading mobile
+  --text-6xl:   3.75rem;   // 60px — hero heading desktop
+
+  // Spacing (base unit 4px)
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+}

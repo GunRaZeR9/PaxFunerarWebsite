@@ -1,0 +1,53 @@
+name: 🚀 Deploy PAX Funerar to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths-ignore:
+      - 'backend/**'
+      - '**.md'
+      - '.ruflo/**'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy Angular → GitHub Pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build Angular (production, GitHub Pages base-href)
+        run: |
+          npx ng build \
+            --configuration production \
+            --base-href /PaxFunerarWebsite/
+
+      - name: 🔁 Copy index.html → 404.html (SPA routing fix)
+        run: cp dist/pax-funerar/browser/index.html dist/pax-funerar/browser/404.html
+
+      - name: 🚫 Add .nojekyll (prevent Jekyll processing)
+        run: touch dist/pax-funerar/browser/.nojekyll
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/pax-funerar/browser

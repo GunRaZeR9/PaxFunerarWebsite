@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Acasă",
+    "services": "Servicii Funerare",
+    "shop": "Magazin",
+    "about": "Despre Noi",
+    "contact": "Contact",
+    "cart": "Coș de Cumpărături"
+  },
+  "common": {
+    "learnMore": "Află mai mult",
+    "requestService": "Solicită Serviciul",
+    "close": "Închide",
+    "addToCart": "Adaugă în coș",
+    "details": "Detalii",
+    "phone": "0745 547 530",
+    "nonStop": "Non-stop"
+  },
+  "home": {
+    "hero": {
+      "title": "Servicii Funerare Complete",
+      "subtitle": "în Târgu Mureș",
+      "description": "În aceste momente dificile, ne angajăm să fim alături de dumneavoastră, oferindu-vă empatie și respect."
+    }
+  },
+  "footer": {
+    "address": "Strada Alexandru Papiu Ilarian 10, Târgu Mureș",
+    "email": "contact@paxfunerar.ro",
+    "rights": "Toate drepturile rezervate"
+  },
+  "cart": {
+    "title": "Coș de Cumpărături",
+    "empty": "Coșul este gol",
+    "subtotal": "Subtotal",
+    "delivery": "Livrare",
+    "total": "Total",
+    "checkout": "Finalizează comanda",
+    "clear": "Golește coșul"
+  },
+  "contact": {
+    "title": "Contact",
+    "form": {
+      "name": "Nume",
+      "email": "Email",
+      "phone": "Telefon",
+      "service": "Serviciu",
+      "message": "Mesaj",
+      "submit": "Trimite Mesajul"
+    }
+  }
+}

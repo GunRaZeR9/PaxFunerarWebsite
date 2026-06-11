@@ -1,0 +1,61 @@
+<div class="emergency-strip">
+  <a href="tel:0745547530">📞 {{ 'common.nonStop' | translate }}: {{ 'common.phone' | translate }}</a>
+</div>
+
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a routerLink="/" class="navbar-logo" (click)="closeMenu()">
+      <span class="logo-text">PAX</span>
+      <span class="logo-sub">Casa Funerară</span>
+    </a>
+
+    <nav class="navbar-links" [class.open]="menuOpen()" aria-label="Meniu principal">
+      @for (link of links; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.exact }"
+          (click)="closeMenu()"
+        >{{ link.labelKey | translate }}</a>
+      }
+
+      <div class="lang-switch">
+        <button
+          type="button"
+          [class.active]="i18n.currentLang() === 'ro'"
+          (click)="switchLang('ro')"
+        >RO</button>
+        <span aria-hidden="true">|</span>
+        <button
+          type="button"
+          [class.active]="i18n.currentLang() === 'hu'"
+          (click)="switchLang('hu')"
+        >HU</button>
+      </div>
+    </nav>
+
+    <div class="navbar-actions">
+      <a routerLink="/magazin" class="cart-icon" [attr.aria-label]="'nav.cart' | translate">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+          <path d="M3 6h18"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        @if (cart.itemCount() > 0) {
+          <span class="cart-badge">{{ cart.itemCount() }}</span>
+        }
+      </a>
+
+      <button
+        type="button"
+        class="hamburger"
+        [class.open]="menuOpen()"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Meniu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>

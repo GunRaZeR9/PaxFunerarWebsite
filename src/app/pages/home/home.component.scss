@@ -1,0 +1,50 @@
+@use '../../../styles/variables' as *;
+
+.hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  background: var(--gradient-hero);
+  padding-block: var(--space-16);
+  text-align: center;
+
+  @media (min-width: $bp-lg) {
+    text-align: left;
+  }
+}
+
+.hero-title {
+  font-size: var(--text-5xl);
+  margin-bottom: var(--space-2);
+
+  @media (min-width: $bp-lg) {
+    font-size: var(--text-6xl);
+  }
+}
+
+.hero-subtitle {
+  font-family: $font-heading;
+  font-size: var(--text-2xl);
+  color: var(--color-accent);
+  margin-bottom: var(--space-6);
+}
+
+.hero-description {
+  max-width: 60ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-8);
+
+  @media (min-width: $bp-lg) {
+    margin-inline: 0;
+  }
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+
+  @media (min-width: $bp-lg) {
+    justify-content: flex-start;
+  }
+}

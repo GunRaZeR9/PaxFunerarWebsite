@@ -1,0 +1,28 @@
+// Fonts loaded via <link> in index.html (preconnect + no late CSS @import).
+@use 'styles/variables' as *;
+@use 'styles/typography';
+@use 'styles/animations';
+@use 'styles/utilities';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 375px;
+  background: var(--color-bg-primary);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+}

@@ -1,0 +1,23 @@
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <span class="footer-logo">PAX</span>
+      <p>{{ 'footer.address' | translate }}</p>
+      <p>
+        <a href="tel:0745547530">0745 547 530</a> ·
+        <a href="tel:0745647530">0745 647 530</a>
+      </p>
+      <p><a href="mailto:contact@paxfunerar.ro">{{ 'footer.email' | translate }}</a></p>
+    </div>
+
+    <nav class="footer-col" aria-label="Linkuri legale">
+      @for (link of legalLinks; track link.path) {
+        <a [routerLink]="link.path">{{ link.label }}</a>
+      }
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {{ year }} Casa Funerară PAX — {{ 'footer.rights' | translate }}</p>
+  </div>
+</footer>

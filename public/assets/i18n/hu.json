@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Kezdőlap",
+    "services": "Temetkezési Szolgáltatások",
+    "shop": "Üzlet",
+    "about": "Rólunk",
+    "contact": "Kapcsolat",
+    "cart": "Bevásárlókosár"
+  },
+  "common": {
+    "learnMore": "Tudjon meg többet",
+    "requestService": "Szolgáltatás igénylése",
+    "close": "Bezárás",
+    "addToCart": "Kosárba",
+    "details": "Részletek",
+    "phone": "0745 547 530",
+    "nonStop": "Non-stop"
+  },
+  "home": {
+    "hero": {
+      "title": "Teljes körű temetkezési szolgáltatások",
+      "subtitle": "Marosvásárhelyen",
+      "description": "Ezekben a nehéz pillanatokban elkötelezetten állunk Ön mellett, empátiával és tisztelettel."
+    }
+  },
+  "footer": {
+    "address": "Alexandru Papiu Ilarian utca 10, Marosvásárhely",
+    "email": "contact@paxfunerar.ro",
+    "rights": "Minden jog fenntartva"
+  },
+  "cart": {
+    "title": "Bevásárlókosár",
+    "empty": "A kosár üres",
+    "subtotal": "Részösszeg",
+    "delivery": "Szállítás",
+    "total": "Összesen",
+    "checkout": "Rendelés véglegesítése",
+    "clear": "Kosár ürítése"
+  },
+  "contact": {
+    "title": "Kapcsolat",
+    "form": {
+      "name": "Név",
+      "email": "Email",
+      "phone": "Telefon",
+      "service": "Szolgáltatás",
+      "message": "Üzenet",
+      "submit": "Üzenet küldése"
+    }
+  }
+}

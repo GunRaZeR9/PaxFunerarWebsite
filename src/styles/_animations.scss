@@ -1,0 +1,23 @@
+// CSS-side animation helpers — anime.js handles JS-driven animations.
+// Only transform + opacity are animated, per performance rules.
+
+// Elements animated in by RevealOnScrollDirective start hidden;
+// the directive/anime.js brings them to visible state.
+.reveal-hidden {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-hidden {
+    opacity: 1;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
