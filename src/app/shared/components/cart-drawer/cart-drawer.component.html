@@ -1,0 +1,85 @@
+<div
+  class="drawer-overlay"
+  [class.open]="cart.drawerOpen()"
+  (click)="cart.closeDrawer()"
+  aria-hidden="true"
+></div>
+
+<aside
+  class="drawer"
+  [class.open]="cart.drawerOpen()"
+  [attr.aria-hidden]="!cart.drawerOpen()"
+  [attr.aria-label]="'cart.title' | translate"
+>
+  <header class="drawer-header">
+    <h2>{{ 'cart.title' | translate }}</h2>
+    <button
+      type="button"
+      class="drawer-close"
+      (click)="cart.closeDrawer()"
+      [attr.aria-label]="'common.close' | translate"
+    >✕</button>
+  </header>
+
+  @if (cart.cartItems().length === 0) {
+    <p class="drawer-empty">{{ 'cart.empty' | translate }}</p>
+  } @else {
+    <ul class="drawer-items">
+      @for (item of cart.cartItems(); track item.productId) {
+        <li class="drawer-item">
+          <span class="item-image" aria-hidden="true">📦</span>
+          <div class="item-info">
+            <span class="item-name">{{ item.name }}</span>
+            <span class="item-price">{{ item.price | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+            <div class="item-qty">
+              <button
+                type="button"
+                (click)="cart.updateQty(item.productId, item.qty - 1)"
+                aria-label="Scade cantitatea"
+              >−</button>
+              <span>{{ item.qty }}</span>
+              <button
+                type="button"
+                (click)="cart.updateQty(item.productId, item.qty + 1)"
+                aria-label="Crește cantitatea"
+              >+</button>
+            </div>
+          </div>
+          <div class="item-side">
+            <button
+              type="button"
+              class="item-remove"
+              (click)="cart.removeItem(item.productId)"
+              [attr.aria-label]="'cart.remove' | translate"
+            >✕</button>
+            <span class="item-total">{{ item.price * item.qty | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <footer class="drawer-footer">
+      <div class="totals-row">
+        <span>{{ 'cart.subtotal' | translate }}</span>
+        <span>{{ cart.subtotal() | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+      </div>
+      <div class="totals-row">
+        <span>{{ 'cart.delivery' | translate }}</span>
+        <span>{{ cart.deliveryFee() | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+      </div>
+      <div class="totals-row totals-total">
+        <span>{{ 'cart.total' | translate }}</span>
+        <span>{{ cart.total() | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+      </div>
+
+      <button type="button" class="cta-btn-primary checkout-btn" disabled>
+        {{ 'cart.checkout' | translate }}
+      </button>
+      <p class="checkout-note">{{ 'cart.checkoutSoon' | translate }}</p>
+
+      <button type="button" class="clear-btn" (click)="cart.clear()">
+        {{ 'cart.clear' | translate }}
+      </button>
+    </footer>
+  }
+</aside>

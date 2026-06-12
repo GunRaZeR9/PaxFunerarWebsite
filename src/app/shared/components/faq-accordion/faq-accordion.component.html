@@ -1,0 +1,33 @@
+<div class="faq-list">
+  @for (item of items(); track item.question; let i = $index) {
+    <div class="faq-item" [class.open]="openIndex() === i">
+      <button
+        type="button"
+        class="faq-question"
+        (click)="toggle(i)"
+        [attr.aria-expanded]="openIndex() === i"
+      >
+        <span>{{ item.question }}</span>
+        <svg
+          class="faq-chevron"
+          aria-hidden="true"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      <div class="faq-answer-wrap" [attr.aria-hidden]="openIndex() !== i">
+        <div class="faq-answer-inner">
+          <p class="faq-answer">{{ item.answer }}</p>
+        </div>
+      </div>
+    </div>
+  }
+</div>

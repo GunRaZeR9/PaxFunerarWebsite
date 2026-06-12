@@ -18,6 +18,16 @@ export class CartService {
   readonly deliveryFee = signal<number>(25); // Fixed delivery fee in RON — confirm with client
   readonly total = computed(() => this.subtotal() + this.deliveryFee());
 
+  readonly drawerOpen = signal(false);
+
+  openDrawer(): void {
+    this.drawerOpen.set(true);
+  }
+
+  closeDrawer(): void {
+    this.drawerOpen.set(false);
+  }
+
   addItem(item: CartItem): void {
     this.items.update(items => {
       const existing = items.find(i => i.productId === item.productId);

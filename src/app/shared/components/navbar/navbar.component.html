@@ -35,7 +35,7 @@
     </nav>
 
     <div class="navbar-actions">
-      <a routerLink="/magazin" class="cart-icon" [attr.aria-label]="'nav.cart' | translate">
+      <button type="button" class="cart-icon" (click)="openCart()" [attr.aria-label]="'nav.cart' | translate">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
           <path d="M3 6h18"/>
@@ -44,7 +44,7 @@
         @if (cart.itemCount() > 0) {
           <span class="cart-badge">{{ cart.itemCount() }}</span>
         }
-      </a>
+      </button>
 
       <button
         type="button"

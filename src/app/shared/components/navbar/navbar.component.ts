@@ -36,4 +36,9 @@ export class NavbarComponent {
   switchLang(lang: Lang): void {
     this.i18n.use(lang);
   }
+
+  openCart(): void {
+    this.closeMenu();
+    this.cart.openDrawer();
+  }
 }

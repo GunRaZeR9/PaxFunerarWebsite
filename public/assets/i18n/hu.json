@@ -35,6 +35,8 @@
     "delivery": "Szállítás",
     "total": "Összesen",
     "checkout": "Rendelés véglegesítése",
+    "checkoutSoon": "Az online fizetés hamarosan elérhető lesz.",
+    "remove": "Termék eltávolítása",
     "clear": "Kosár ürítése"
   },
   "contact": {

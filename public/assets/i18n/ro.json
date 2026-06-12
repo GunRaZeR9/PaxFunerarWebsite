@@ -35,6 +35,8 @@
     "delivery": "Livrare",
     "total": "Total",
     "checkout": "Finalizează comanda",
+    "checkoutSoon": "Plata online va fi disponibilă în curând.",
+    "remove": "Șterge produsul",
     "clear": "Golește coșul"
   },
   "contact": {
