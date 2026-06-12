@@ -12,5 +12,10 @@
   </div>
   <h3 class="card-name">{{ card().name }}</h3>
   <p class="card-teaser">{{ card().teaser }}</p>
-  <span class="card-link" aria-hidden="true">{{ 'common.learnMore' | translate }} →</span>
+  <a
+    class="card-link"
+    [routerLink]="['/servicii-funerare', card().slug]"
+    (click)="$event.stopPropagation()"
+    (keydown.enter)="$event.stopPropagation()"
+  >{{ 'common.learnMore' | translate }} →</a>
 </article>

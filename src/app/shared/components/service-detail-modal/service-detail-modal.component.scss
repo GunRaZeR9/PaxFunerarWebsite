@@ -27,13 +27,13 @@
   border-radius: 16px 16px 0 0;
   overflow-y: auto;
 
-  // Desktop: centered panel
+  // Desktop: centered panel.
+  // Centered via inset+margin, NOT transform — anime.js animates translateY
+  // on this element and would overwrite a translate(-50%,-50%) centering.
   @media (min-width: $bp-md) {
-    top: 50%;
-    left: 50%;
-    bottom: auto;
-    right: auto;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    margin: auto;
+    height: fit-content;
     width: 90%;
     max-width: 640px;
     max-height: 85vh;
