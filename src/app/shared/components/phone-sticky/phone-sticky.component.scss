@@ -19,9 +19,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-2);
   width: 52px;
   height: 52px;
-  border-radius: 50%;
+  border-radius: 999px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   color: #fff;
 
@@ -32,5 +33,29 @@
 
   &.whatsapp {
     background: #25d366;
+  }
+}
+
+// Mobile: round icon-only buttons
+.sticky-label {
+  display: none;
+}
+
+// Desktop: labeled pills, right-aligned
+@media (min-width: $bp-lg) {
+  .phone-sticky {
+    align-items: flex-end;
+  }
+
+  .sticky-btn {
+    width: auto;
+    padding-inline: var(--space-6);
+  }
+
+  .sticky-label {
+    display: inline;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    white-space: nowrap;
   }
 }

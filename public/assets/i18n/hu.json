@@ -174,7 +174,9 @@
   },
   "phoneSticky": {
     "call": "Hívjon most: 0745 547 530",
-    "whatsapp": "Írjon nekünk WhatsAppon"
+    "whatsapp": "Írjon nekünk WhatsAppon",
+    "callLabel": "Hívjon",
+    "whatsappLabel": "Üzenet küldése"
   },
   "footer": {
     "address": "Alexandru Papiu Ilarian utca 10, Marosvásárhely",

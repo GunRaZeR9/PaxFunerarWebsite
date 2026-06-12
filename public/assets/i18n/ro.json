@@ -174,7 +174,9 @@
   },
   "phoneSticky": {
     "call": "Sună acum: 0745 547 530",
-    "whatsapp": "Scrie-ne pe WhatsApp"
+    "whatsapp": "Scrie-ne pe WhatsApp",
+    "callLabel": "Sună",
+    "whatsappLabel": "Trimite un mesaj"
   },
   "footer": {
     "address": "Strada Alexandru Papiu Ilarian 10, Târgu Mureș",
