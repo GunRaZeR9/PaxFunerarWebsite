@@ -7,7 +7,7 @@ import { SeoService } from '../../core/services/seo.service';
 import { AnimationService } from '../../core/services/animation.service';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 import { DecimalPipe } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'pax-magazin',
@@ -23,6 +23,7 @@ export class MagazinComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly translate = inject(TranslateService);
 
   readonly categories = CATEGORIES;
   readonly activeCategory = signal<string>('all');
@@ -36,9 +37,9 @@ export class MagazinComponent implements OnInit {
 
   ngOnInit(): void {
     this.seo.setPage({
-      title: 'Magazin Funerar | Casa Funerară PAX Târgu Mureș',
+      title: 'Magazin Floral | Casa Funerară PAX Târgu Mureș',
       description:
-        'Magazin funerar PAX: lumânări, coroane florale, urne, fotoceramică, sicrie. Comandă online cu livrare în Târgu Mureș.',
+        'Aranjamente florale funerare PAX: coroane, jerbe, buchete și aranjamente din flori naturale. Comandă online sau telefonic la 0741 115 864, livrare în Târgu Mureș.',
       canonical: 'https://paxfunerar.ro/magazin',
     });
     this.anim.fadeUp('.page-hero-title');
@@ -83,7 +84,7 @@ export class MagazinComponent implements OnInit {
   addToCart(product: Product): void {
     this.cart.addItem({
       productId: product.id,
-      name: product.name,
+      name: this.translate.instant(product.name),
       price: product.price,
       qty: this.productQty(),
       image: product.image,
@@ -95,7 +96,7 @@ export class MagazinComponent implements OnInit {
     event.stopPropagation();
     this.cart.addItem({
       productId: product.id,
-      name: product.name,
+      name: this.translate.instant(product.name),
       price: product.price,
       qty: 1,
       image: product.image,

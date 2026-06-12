@@ -118,7 +118,7 @@
             <select id="service" formControlName="service">
               <option value="">{{ 'contact.form.servicePh' | translate }}</option>
               @for (opt of serviceOptions; track opt.slug) {
-                <option [value]="opt.slug">{{ opt.name }}</option>
+                <option [value]="opt.slug">{{ opt.name | translate }}</option>
               }
             </select>
           </div>

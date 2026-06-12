@@ -15,6 +15,19 @@ import { TranslateModule } from '@ngx-translate/core';
 export class DespreNoiComponent implements OnInit {
   readonly testimonialKeys = ['t1', 't2', 't3'];
 
+  readonly storyBlocks = ['history', 'commitment', 'achievements', 'future'];
+
+  readonly values = [
+    { id: 'respect', icon: '🙏' },
+    { id: 'compassion', icon: '❤' },
+    { id: 'professionalism', icon: '⭐' },
+    { id: 'integrity', icon: '⚖' },
+    { id: 'empathy', icon: '🤝' },
+    { id: 'availability', icon: '🕐' },
+    { id: 'discretion', icon: '🔒' },
+    { id: 'experience', icon: '🏛' },
+  ];
+
   private readonly seo = inject(SeoService);
   private readonly anim = inject(AnimationService);
 
@@ -27,5 +40,7 @@ export class DespreNoiComponent implements OnInit {
     });
     this.anim.fadeUp('.page-hero-title');
     this.anim.fadeUp('.page-hero-tagline', 150);
+    this.anim.fadeUp('.page-hero-motto', 250);
+    this.anim.fadeUp('.page-hero-intro', 350);
   }
 }

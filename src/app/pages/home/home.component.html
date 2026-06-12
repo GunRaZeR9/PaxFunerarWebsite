@@ -7,13 +7,14 @@
     <p class="hero-description reveal-hidden">{{ 'home.hero.description' | translate }}</p>
     <div class="hero-actions reveal-hidden">
       <a href="tel:0745547530" class="cta-btn-primary">☎ {{ 'common.phone' | translate }}</a>
-      <a routerLink="/contact" class="cta-btn-ghost">{{ 'nav.cta' | translate }}</a>
+      <a routerLink="/servicii-funerare" class="cta-btn-ghost">{{ 'home.hero.btn1' | translate }}</a>
+      <a routerLink="/magazin" class="cta-btn-ghost">{{ 'home.hero.btn2' | translate }}</a>
     </div>
     <nav class="hero-quick reveal-hidden" aria-label="Servicii populare">
       @for (q of heroQuickLinks; track q.slug) {
         <a [routerLink]="['/servicii-funerare', q.slug]" class="hero-quick-link">
           <img [src]="q.icon" alt="" width="22" height="22">
-          <span>{{ q.name }}</span>
+          <span>{{ q.name | translate }}</span>
         </a>
       }
     </nav>
@@ -38,6 +39,32 @@
     <div class="services-more" paxRevealOnScroll>
       <a routerLink="/servicii-funerare" class="cta-btn-ghost">{{ 'home.services.all' | translate }}</a>
     </div>
+  </div>
+</section>
+
+<section class="guide-section">
+  <div class="container">
+    <h2 class="section-title" paxRevealOnScroll>{{ 'home.guide.title' | translate }}</h2>
+    <div class="ornament-divider" aria-hidden="true"><span></span></div>
+    <p class="section-subtitle" paxRevealOnScroll>{{ 'home.guide.subtitle' | translate }}</p>
+    <ol class="guide-steps">
+      @for (step of guideSteps; track step.n) {
+        <li class="guide-step" paxRevealOnScroll>
+          <span class="guide-step-number" aria-hidden="true">{{ step.n }}</span>
+          <div class="guide-step-body">
+            <h3 class="guide-step-title">{{ step.title | translate }}</h3>
+            <p class="guide-step-text">{{ step.text | translate }}</p>
+            @if (step.items.length > 0) {
+              <ul class="guide-step-list">
+                @for (item of step.items; track item) {
+                  <li>{{ item | translate }}</li>
+                }
+              </ul>
+            }
+          </div>
+        </li>
+      }
+    </ol>
   </div>
 </section>
 
@@ -72,16 +99,23 @@
     <h2 class="section-title">{{ 'home.faqTitle' | translate }}</h2>
     <div class="ornament-divider" aria-hidden="true"><span></span></div>
     <pax-faq-accordion [items]="faqItems" />
+    <p class="faq-cta">
+      {{ 'home.faqCta' | translate }}
+      <a href="tel:0745547530">☎ {{ 'common.phone' | translate }}</a>
+    </p>
   </div>
 </section>
 
 <section class="cta-banner" paxRevealOnScroll>
   <div class="container cta-inner">
     <div>
-      <h2>{{ 'ctaBanner.title' | translate }}</h2>
-      <p>{{ 'ctaBanner.text' | translate }}</p>
+      <h2>{{ 'home.ctaSection.title' | translate }}</h2>
+      <p>{{ 'home.ctaSection.text' | translate }}</p>
     </div>
-    <a href="tel:0745547530" class="cta-btn-dark">☎ {{ 'common.phone' | translate }}</a>
+    <div class="cta-actions">
+      <a href="tel:0745547530" class="cta-btn-dark">☎ {{ 'home.ctaSection.btn1' | translate }}</a>
+      <a routerLink="/contact" class="cta-btn-dark cta-btn-dark--outline">{{ 'home.ctaSection.btn2' | translate }}</a>
+    </div>
   </div>
 </section>
 

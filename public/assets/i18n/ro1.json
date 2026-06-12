@@ -126,98 +126,6 @@
     "title": "Servicii Funerare",
     "desc": "Casa Funerară PAX oferă servicii complete, cu respect și demnitate, non-stop în Târgu Mureș."
   },
-  "servicesData": {
-    "intocmirea-actelor": {
-      "name": "Întocmirea Actelor",
-      "teaser": "Ghidăm familia prin toate formalitățile administrative, rapid și cu grijă.",
-      "description": "Serviciul de întocmire a actelor oferit de Casa Funerară PAX constă în asistența și îndrumarea familiilor în procesul de obținere a actelor necesare în urma decesului. Ne ocupăm de toate demersurile birocratice astfel încât familia să se poată concentra pe momentele de reculegere și pe cei dragi.",
-      "b1": "Consiliere pas cu pas",
-      "b2": "Obținere certificat de deces",
-      "b3": "Asistență la Starea Civilă",
-      "b4": "Documente pentru ajutor de deces"
-    },
-    "transport-funerar": {
-      "name": "Transport Funerar",
-      "teaser": "Vehicule specializate și personal calificat pentru un transport demn.",
-      "description": "Oferim servicii de transport funerar de înaltă calitate, asigurând că defunctul este tratat cu demnitate și respect pe tot parcursul procesului. Dispunem de vehicule autorizate și personal specializat disponibil non-stop.",
-      "b1": "Vehicule autorizate",
-      "b2": "Disponibilitate 24/7",
-      "b3": "Transport local și național",
-      "b4": "Personal specializat"
-    },
-    "imbalsamare": {
-      "name": "Îmbălsămare",
-      "teaser": "Tratare și pregătire atentă a celui drag pentru ceremonial.",
-      "description": "Serviciul de îmbălsămare constă în tratarea și pregătirea trupului persoanei decedate pentru vizionare și înmormântare. Procedura este realizată de personal atestat, cu respect față de defunct și familia acestuia.",
-      "b1": "Personal atestat",
-      "b2": "Proceduri respectuoase",
-      "b3": "Aspect natural conservat",
-      "b4": "Respectarea tradițiilor"
-    },
-    "servicii-ceremoniale": {
-      "name": "Servicii Ceremoniale",
-      "teaser": "Ceremonii complete, personalizate după tradițiile și dorințele familiei.",
-      "description": "Organizarea completă a ceremoniilor funerare tradiționale, incluzând vizitarea decedatului, slujba religioasă sau civilă și înhumarea. Ne adaptăm la tradițiile și dorințele fiecărei familii pentru un ultim omagiu demn.",
-      "b1": "Slujbă religioasă sau civilă",
-      "b2": "Vizionare organizată",
-      "b3": "Personalizare completă",
-      "b4": "Coordonare cu cimitirul"
-    },
-    "servicii-de-catering": {
-      "name": "Servicii de Catering",
-      "teaser": "Masă de comemorare organizată cu respect pentru momentul trăit.",
-      "description": "Casa Funerară PAX asigură servicii de catering pentru familia și invitații la ceremonie, cu o varietate de opțiuni adaptate numărului de persoane și preferințelor familiei.",
-      "b1": "Meniu personalizat",
-      "b2": "Livrare la locația dorită",
-      "b3": "Servire profesionistă",
-      "b4": "Adaptabil la număr de persoane"
-    },
-    "repatriere-decedati": {
-      "name": "Repatriere Decedați",
-      "teaser": "Aducem acasă pe cei dragi din orice colț al Europei.",
-      "description": "Asistență completă în transferul internațional al decedaților, inclusiv gestionarea formalităților legale, documentației consulare și logisticii de transport din și spre orice țară europeană.",
-      "b1": "Formalități consulare",
-      "b2": "Transport internațional",
-      "b3": "Coordonare cu autoritățile",
-      "b4": "Disponibilitate 24/7"
-    },
-    "capela": {
-      "name": "Capelă",
-      "teaser": "Spațiu de ceremonial demn și liniștit pentru ultimul omagiu.",
-      "description": "Capelă mortuară modernă, disponibilă pentru ceremonii de vizionare și adio, pregătită cu respect și atenție la detalii. Sistemul audio și ambientarea pot fi personalizate conform dorințelor familiei.",
-      "b1": "Ambientare personalizată",
-      "b2": "Sistem audio",
-      "b3": "Capacitate familiară",
-      "b4": "Disponibilă non-stop"
-    },
-    "pregatire-loc-de-veci": {
-      "name": "Pregătire Loc de Veci",
-      "teaser": "Organizăm și pregătim locul de odihnă cu grijă și profesionalism.",
-      "description": "Serviciu complet de pregătire a locului de înhumare, inclusiv coordonarea cu administrația cimitirului, pregătirea mormântului și aranjamentele florale și funerare.",
-      "b1": "Coordonare cu cimitirul",
-      "b2": "Pregătire completă",
-      "b3": "Aranjamente florale",
-      "b4": "Monument funerar"
-    },
-    "incinerare": {
-      "name": "Incinerare",
-      "teaser": "Ceremonii de incinerare organizate cu demnitate și respect.",
-      "description": "Servicii complete de incinerare, inclusiv transportul, formalitățile necesare și organizarea ceremoniei de adio. Oferim consiliere cu privire la toate opțiunile disponibile privind cenușa.",
-      "b1": "Urnă la alegere",
-      "b2": "Ceremonie personalizată",
-      "b3": "Formalități incluse",
-      "b4": "Consiliere despre opțiunile cu cenușa"
-    },
-    "fotoceramica": {
-      "name": "Fotoceramică",
-      "teaser": "Portrete ceramice durabile — o amintire veșnică pe piatra funerară.",
-      "description": "Fotoceramica este o tehnologie ce permite imprimarea fotografiei defunctului pe o placă ceramică rezistentă la intemperii, destinată pietrei funerare. Disponibilă în 9 modele de formă și dimensiune.",
-      "b1": "Rezistentă la intemperii",
-      "b2": "9+ modele disponibile",
-      "b3": "Calitate înaltă a imaginii",
-      "b4": "Livrare rapidă"
-    }
-  },
   "serviceDetail": {
     "includes": "Ce includem",
     "helpTitle": "Aveți nevoie de ajutor?",
@@ -229,9 +137,7 @@
     "sharedHeroText": "Servicii funerare complete în Târgu Mureș.",
     "faqTitle": "Întrebări și Răspunsuri",
     "faqSubtitle": "Întrebări Suplimentare?",
-    "faqCta": "Suna acum: 0745 547 530",
-    "whyTitle": "De ce să alegeți Casa Funerară PAX",
-    "extrasTitle": "Servicii suplimentare"
+    "faqCta": "Suna acum: 0745 547 530"
   },
   "servicePage": {
     "intocmirea-actelor": {
@@ -399,67 +305,16 @@
     }
   },
   "shop": {
-    "title": "Magazin Floral",
-    "desc": "Aranjamente florale funerare — coroane, jerbe, buchete și aranjamente din flori naturale, cu livrare în Târgu Mureș.",
-    "floralNote": "Comenzi florale telefonice: 0741 115 864 — non-stop",
+    "title": "Magazin Funerar",
+    "desc": "Produse funerare de calitate — lumânări, coroane, urne, fotoceramică și accesorii.",
     "cat": {
       "all": "Toate",
+      "lumanari": "Lumânări",
       "coroane": "Coroane Florale",
-      "jerbe": "Jerbe",
-      "aranjamente": "Aranjamente",
-      "buchete": "Buchete"
-    },
-    "products": {
-      "coroana-clasica": {
-        "name": "Coroană Florală Clasică",
-        "shortDesc": "Coroană din flori naturale albe, diametru 60 cm.",
-        "description": "Coroană funerară clasică din flori naturale albe și verdeață, diametru 60 cm. Include panglică personalizabilă cu mesaj."
-      },
-      "coroana-trandafiri": {
-        "name": "Coroană din Trandafiri",
-        "shortDesc": "Coroană premium din trandafiri albi, diametru 80 cm.",
-        "description": "Coroană funerară premium din trandafiri albi și orhidee, diametru 80 cm. Compoziție elegantă, panglică brodată inclusă."
-      },
-      "coroana-garoafe": {
-        "name": "Coroană din Garoafe",
-        "shortDesc": "Coroană tradițională din garoafe roșii sau albe.",
-        "description": "Coroană funerară din garoafe naturale roșii sau albe, la alegere. Aranjament dens, lucrat manual, cu panglică personalizabilă."
-      },
-      "coroana-mixta": {
-        "name": "Coroană Mixtă de Sezon",
-        "shortDesc": "Coroană din flori mixte de sezon, diametru 70 cm.",
-        "description": "Coroană funerară din flori mixte de sezon — crizanteme, gerbera, trandafiri și verdeață decorativă. Diametru 70 cm, panglică inclusă."
-      },
-      "jerba-clasica": {
-        "name": "Jerbă Clasică",
-        "shortDesc": "Jerbă din flori naturale cu verdeață decorativă.",
-        "description": "Jerbă funerară clasică din flori naturale și verdeață decorativă. Potrivită pentru depunere la căpătâi sau pe mormânt. Panglică cu mesaj inclusă."
-      },
-      "jerba-premium": {
-        "name": "Jerbă Premium",
-        "shortDesc": "Jerbă elegantă din trandafiri și crini.",
-        "description": "Jerbă funerară premium din trandafiri, crini și orhidee, cu verdeață fină. Compoziție bogată, lucrată manual. Panglică brodată inclusă."
-      },
-      "cruce-florala": {
-        "name": "Cruce din Flori",
-        "shortDesc": "Aranjament în formă de cruce din flori naturale.",
-        "description": "Aranjament funerar în formă de cruce, realizat din flori naturale albe — crizanteme și garoafe. Simbol al credinței și al omagiului adus celui drag."
-      },
-      "aranjament-capac": {
-        "name": "Aranjament pentru Sicriu",
-        "shortDesc": "Aranjament floral pentru capacul sicriului.",
-        "description": "Aranjament floral elegant pentru capacul sicriului, din trandafiri, crini și verdeață fină. Realizat manual, adaptat cromaticii dorite de familie."
-      },
-      "cos-flori": {
-        "name": "Coș cu Flori",
-        "shortDesc": "Coș cu flori naturale de sezon pentru comemorări.",
-        "description": "Coș cu flori naturale de sezon, potrivit pentru comemorări și parastase. Compoziție variată, adaptată preferințelor dumneavoastră."
-      },
-      "buchet-comemorativ": {
-        "name": "Buchet Comemorativ",
-        "shortDesc": "Buchet sobru din flori albe pentru comemorare.",
-        "description": "Buchet comemorativ sobru din flori naturale albe — trandafiri, crizanteme și verdeață. Potrivit pentru depunere la mormânt sau ceremonii de comemorare."
-      }
+      "urne": "Urne",
+      "fotoceramica": "Fotoceramică",
+      "sicrie": "Sicrie",
+      "accesorii": "Accesorii"
     }
   },
   "contact": {
@@ -639,7 +494,7 @@
       "s7Intro": "Conform GDPR, aveți următoarele drepturi:",
       "s7Item1": "Dreptul de acces la datele personale",
       "s7Item2": "Dreptul la rectificarea datelor",
-      "s7Item3": "Dreptul la ștergerea datelor („dreptul de a fi uitat\")",
+      "s7Item3": "Dreptul la ștergerea datelor („dreptul de a fi uitat")",
       "s7Item4": "Dreptul la restricționarea prelucrării",
       "s7Item5": "Dreptul de a vă opune prelucrării",
       "s7Item6": "Dreptul la portabilitatea datelor",

@@ -35,6 +35,14 @@
   max-width: 60ch;
 }
 
+.detail-intro {
+  margin-top: var(--space-6);
+  max-width: 70ch;
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
 .detail-body {
   padding-block: var(--space-16);
 }
@@ -53,6 +61,172 @@
   font-size: var(--text-lg);
   line-height: 1.8;
   margin-bottom: var(--space-8);
+}
+
+.body-intro {
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.section-title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-6);
+}
+
+// ── Numbered content blocks (the meat of the page) ──────────────
+.item-blocks {
+  list-style: none;
+  margin: 0 0 var(--space-12);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.item-block {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+
+  @media (min-width: $bp-md) {
+    gap: var(--space-6);
+  }
+}
+
+.item-number {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-accent);
+  background: var(--color-bg-secondary);
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: var(--text-lg);
+}
+
+.item-title {
+  font-size: var(--text-xl);
+  margin: 0 0 var(--space-2);
+}
+
+.item-text {
+  margin: 0;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
+// ── "Why PAX" checkmark list (benefits / reasons) ────────────────
+.why-section {
+  margin-bottom: var(--space-12);
+}
+
+.check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  li {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    color: var(--color-text-secondary);
+  }
+}
+
+// ── Extras grid (incinerare) ─────────────────────────────────────
+.extras-section {
+  margin-bottom: var(--space-12);
+}
+
+.extras-grid {
+  display: grid;
+  gap: var(--space-4);
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.extra-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-6);
+
+  h3 {
+    font-size: var(--text-lg);
+    margin: 0 0 var(--space-2);
+  }
+
+  p {
+    margin: 0;
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+}
+
+// ── Shapes grid + CTA row (fotoceramica) ─────────────────────────
+.shapes-section {
+  margin-bottom: var(--space-12);
+}
+
+.shapes-grid {
+  list-style: none;
+  margin: 0 0 var(--space-8);
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (min-width: $bp-sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.shape-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: var(--space-3) var(--space-4);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-accent);
+  border-radius: 8px;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+// ── Conclusion callout ───────────────────────────────────────────
+.conclusion-callout {
+  margin-top: var(--space-8);
+  padding: var(--space-6) var(--space-8);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 12px 12px 0;
+  background: var(--color-bg-secondary);
+
+  p {
+    margin: 0;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
 }
 
 .benefits-title {
@@ -104,8 +278,34 @@
   }
 }
 
+// ── FAQ / help band ──────────────────────────────────────────────
+.faq-band {
+  background: var(--color-bg-secondary);
+  border-block: 1px solid var(--color-border);
+  padding-block: var(--space-8);
+}
+
+.faq-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: flex-start;
+
+  @media (min-width: $bp-md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.faq-subtitle {
+  margin: 0;
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
 .back-section {
-  padding-bottom: var(--space-12);
+  padding-block: var(--space-12);
 }
 
 .back-link {

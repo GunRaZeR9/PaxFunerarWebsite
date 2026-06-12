@@ -19,10 +19,10 @@ export class FooterComponent {
   }));
 
   readonly legalLinks = [
-    { path: '/politica-de-confidentialitate', label: 'Politică de Confidențialitate' },
-    { path: '/politica-de-cookies', label: 'Politică de Cookies' },
-    { path: '/termeni-si-conditii', label: 'Termeni și Condiții' },
-    { path: '/politica-de-reclamatii', label: 'Politică de Reclamații' },
-    { path: '/politica-clienti', label: 'Politică Clienți' },
+    { path: '/politica-de-confidentialitate', label: 'legal.confidentialitate.navTitle' },
+    { path: '/politica-de-cookies', label: 'legal.cookies.navTitle' },
+    { path: '/termeni-si-conditii', label: 'legal.termeni.navTitle' },
+    { path: '/politica-de-reclamatii', label: 'legal.reclamatii.navTitle' },
+    { path: '/politica-clienti', label: 'legal.clienti.navTitle' },
   ];
 }

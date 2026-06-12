@@ -5,13 +5,13 @@
   (keydown.space)="open()"
   role="button"
   tabindex="0"
-  [attr.aria-label]="('common.details' | translate) + ' ' + card().name"
+  [attr.aria-label]="('common.details' | translate) + ' ' + (card().name | translate)"
 >
   <div class="card-icon">
     <img [src]="card().icon" alt="" width="34" height="34" loading="lazy">
   </div>
-  <h3 class="card-name">{{ card().name }}</h3>
-  <p class="card-teaser">{{ card().teaser }}</p>
+  <h3 class="card-name">{{ card().name | translate }}</h3>
+  <p class="card-teaser">{{ card().teaser | translate }}</p>
   <a
     class="card-link"
     [routerLink]="['/servicii-funerare', card().slug]"

@@ -10,21 +10,21 @@
   <div
     class="modal-panel"
     role="dialog"
-    [attr.aria-label]="service()!.name"
+    [attr.aria-label]="service()!.name | translate"
     (keydown)="onKeydown($event)"
     tabindex="0"
   >
     <button class="modal-close" type="button" (click)="close()" [attr.aria-label]="'common.close' | translate">✕</button>
 
     <div class="modal-body">
-      <h2 class="modal-title">{{ service()!.name }}</h2>
-      <p class="modal-description">{{ service()!.description }}</p>
+      <h2 class="modal-title">{{ service()!.name | translate }}</h2>
+      <p class="modal-description">{{ service()!.description | translate }}</p>
 
       @if (service()!.benefits.length) {
         <ul class="modal-benefits">
           @for (b of service()!.benefits; track b) {
             <li>
-              <span class="benefit-check" aria-hidden="true">✓</span> {{ b }}
+              <span class="benefit-check" aria-hidden="true">✓</span> {{ b | translate }}
             </li>
           }
         </ul>

@@ -142,6 +142,118 @@
   margin-top: var(--space-8);
 }
 
+// ── Step-by-step funeral guide — vertical timeline with gold step numbers ──
+.guide-section {
+  padding-block: var(--space-16);
+}
+
+.guide-steps {
+  list-style: none;
+  margin: var(--space-4) auto 0;
+  padding: 0;
+  max-width: 46rem;
+}
+
+.guide-step {
+  position: relative;
+  display: flex;
+  gap: var(--space-4);
+  padding-bottom: var(--space-12);
+
+  // timeline connector between step numbers
+  &:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: 56px;
+    left: 24px;
+    bottom: var(--space-2);
+    width: 1px;
+    background: linear-gradient(180deg, var(--color-border-accent), var(--color-border));
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  @media (min-width: $bp-md) {
+    gap: var(--space-6);
+
+    &:not(:last-child)::before {
+      left: 28px;
+    }
+  }
+}
+
+.guide-step-number {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-border-accent);
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  font-family: $font-heading;
+  font-size: var(--text-2xl);
+  line-height: 1;
+  color: var(--color-accent);
+
+  @media (min-width: $bp-md) {
+    width: 56px;
+    height: 56px;
+    font-size: var(--text-3xl);
+  }
+}
+
+.guide-step-body {
+  min-width: 0;
+  padding-top: var(--space-2);
+}
+
+.guide-step-title {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-3);
+
+  @media (min-width: $bp-md) {
+    font-size: var(--text-2xl);
+  }
+}
+
+.guide-step-text {
+  max-width: 70ch;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+}
+
+.guide-step-list {
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  max-width: 70ch;
+
+  li {
+    position: relative;
+    padding-left: var(--space-6);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+
+    & + li {
+      margin-top: var(--space-3);
+    }
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+  }
+}
+
 .about-teaser {
   background: var(--color-bg-secondary);
   border-block: 1px solid var(--color-border);
@@ -215,6 +327,31 @@
   }
 }
 
+.faq-cta {
+  margin: var(--space-8) 0 0;
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 44px;
+    padding-inline: var(--space-2);
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--color-border-accent);
+    transition: color 150ms ease;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--color-accent-light);
+    }
+  }
+}
+
 // Gold-drenched closing band — the one full-color moment on the page
 .cta-banner {
   background: var(--gradient-gold);
@@ -236,13 +373,30 @@
 
   p {
     margin: 0;
+    max-width: 60ch;
     color: rgba(22, 19, 16, 0.75);
     font-weight: 500;
+    line-height: 1.7;
   }
 
   @media (min-width: $bp-md) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-8);
   }
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+// secondary button on the gold band — dark outline instead of solid fill
+.cta-btn-dark--outline {
+  background: transparent;
+  border: 1px solid rgba(22, 19, 16, 0.5);
+  color: #161310;
 }

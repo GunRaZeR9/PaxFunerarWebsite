@@ -3,6 +3,7 @@
     <div class="footer-col footer-brand">
       <span class="footer-logo">PAX</span>
       <p class="footer-tagline">{{ 'about.tagline' | translate }}</p>
+      <p class="footer-description">{{ 'footer.description' | translate }}</p>
       <p>{{ 'footer.address' | translate }}</p>
       <p>
         <a href="tel:0745547530">0745 547 530</a> ·
@@ -12,27 +13,36 @@
       <p class="footer-nonstop">{{ 'common.nonStop' | translate }} · 24/7</p>
     </div>
 
-    <nav class="footer-col" [attr.aria-label]="'nav.services' | translate">
-      <h3 class="footer-heading">{{ 'nav.services' | translate }}</h3>
+    <nav class="footer-col" [attr.aria-label]="'footer.servicesTitle' | translate">
+      <h3 class="footer-heading">{{ 'footer.servicesTitle' | translate }}</h3>
       @for (link of serviceLinks; track link.path) {
-        <a [routerLink]="link.path">{{ link.label }}</a>
+        <a [routerLink]="link.path">{{ link.label | translate }}</a>
       }
       <a routerLink="/servicii-funerare" class="footer-all">{{ 'nav.allServices' | translate }} →</a>
+    </nav>
+
+    <nav class="footer-col" [attr.aria-label]="'footer.usefulLinks' | translate">
+      <h3 class="footer-heading">{{ 'footer.usefulLinks' | translate }}</h3>
+      <a routerLink="/magazin">{{ 'nav.shop' | translate }}</a>
+      <a routerLink="/despre-noi">{{ 'nav.about' | translate }}</a>
+      <a routerLink="/contact">{{ 'nav.contact' | translate }}</a>
     </nav>
 
     <nav class="footer-col" [attr.aria-label]="'footer.legalTitle' | translate">
       <h3 class="footer-heading">{{ 'footer.legalTitle' | translate }}</h3>
       @for (link of legalLinks; track link.path) {
-        <a [routerLink]="link.path">{{ link.label }}</a>
+        <a [routerLink]="link.path">{{ link.label | translate }}</a>
       }
-      <a routerLink="/magazin">{{ 'nav.shop' | translate }}</a>
-      <a routerLink="/despre-noi">{{ 'nav.about' | translate }}</a>
-      <a routerLink="/contact">{{ 'nav.contact' | translate }}</a>
     </nav>
   </div>
 
   <div class="footer-bottom">
     <div class="ornament-divider" aria-hidden="true"><span></span></div>
-    <p>© {{ year }} Casa Funerară PAX — {{ 'footer.rights' | translate }}</p>
+    <p>© {{ year }} {{ 'footer.company' | translate }} — {{ 'footer.rights' | translate }}</p>
+    <p class="footer-sal">
+      {{ 'footer.salText' | translate }}
+      <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener">ANPC — SAL</a> ·
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">SOL (ODR)</a>
+    </p>
   </div>
 </footer>

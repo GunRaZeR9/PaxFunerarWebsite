@@ -6,27 +6,104 @@
         <span aria-hidden="true">›</span>
         <a routerLink="/servicii-funerare">{{ 'nav.services' | translate }}</a>
         <span aria-hidden="true">›</span>
-        <span>{{ s.name }}</span>
+        <span>{{ s.name | translate }}</span>
       </nav>
-      <h1 class="detail-title reveal-hidden">{{ s.name }}</h1>
-      <p class="detail-teaser reveal-hidden">{{ s.teaser }}</p>
+      <h1 class="detail-title reveal-hidden">{{ s.name | translate }}</h1>
+      <p class="detail-teaser reveal-hidden">{{ s.teaser | translate }}</p>
+      @if (page(); as p) {
+        <p class="detail-intro reveal-hidden">{{ p.heroIntro | translate }}</p>
+      }
     </div>
   </section>
 
   <section class="detail-body">
-    <div class="container detail-grid" paxRevealOnScroll>
+    <div class="container detail-grid">
       <div class="detail-content">
-        <p class="detail-description">{{ s.description }}</p>
+        <p class="detail-description" paxRevealOnScroll>{{ s.description | translate }}</p>
+
+        @if (page(); as p) {
+          <p class="body-intro" paxRevealOnScroll>{{ p.bodyIntro | translate }}</p>
+
+          <ol class="item-blocks">
+            @for (item of p.items; track item.title) {
+              <li class="item-block" paxRevealOnScroll>
+                <span class="item-number" aria-hidden="true">{{ $index + 1 }}</span>
+                <div class="item-body">
+                  <h2 class="item-title">{{ item.title | translate }}</h2>
+                  <p class="item-text">{{ item.text | translate }}</p>
+                </div>
+              </li>
+            }
+          </ol>
+
+          @if (p.why.length) {
+            <div class="why-section" paxRevealOnScroll>
+              <h2 class="section-title">{{ 'serviceDetail.whyTitle' | translate }}</h2>
+              <ul class="check-list">
+                @for (w of p.why; track w) {
+                  <li>
+                    <span class="benefit-check" aria-hidden="true">✓</span> {{ w | translate }}
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+
+          @if (p.extras.length) {
+            <div class="extras-section" paxRevealOnScroll>
+              <h2 class="section-title">{{ 'serviceDetail.extrasTitle' | translate }}</h2>
+              <div class="extras-grid">
+                @for (e of p.extras; track e.title) {
+                  <article class="extra-card">
+                    <h3>{{ e.title | translate }}</h3>
+                    <p>{{ e.text | translate }}</p>
+                  </article>
+                }
+              </div>
+            </div>
+          }
+
+          @if (p.shapesTitle) {
+            <div class="shapes-section" paxRevealOnScroll>
+              <h2 class="section-title">{{ p.shapesTitle | translate }}</h2>
+              <ul class="shapes-grid">
+                @for (shape of p.shapes; track shape) {
+                  <li class="shape-chip">{{ shape | translate }}</li>
+                }
+              </ul>
+              <div class="cta-row">
+                @if (p.orderCta) {
+                  <a
+                    routerLink="/contact"
+                    [queryParams]="{ service: s.slug }"
+                    class="cta-btn-primary"
+                  >
+                    {{ p.orderCta | translate }}
+                  </a>
+                }
+                @if (p.contactCta) {
+                  <a href="tel:0745547530" class="cta-btn-ghost">{{ p.contactCta | translate }}</a>
+                }
+              </div>
+            </div>
+          }
+        }
 
         @if (s.benefits.length) {
           <h2 class="benefits-title">{{ 'serviceDetail.includes' | translate }}</h2>
           <ul class="benefits-list">
             @for (b of s.benefits; track b) {
               <li>
-                <span class="benefit-check" aria-hidden="true">✓</span> {{ b }}
+                <span class="benefit-check" aria-hidden="true">✓</span> {{ b | translate }}
               </li>
             }
           </ul>
+        }
+
+        @if (page()?.conclusion; as c) {
+          <aside class="conclusion-callout" paxRevealOnScroll>
+            <p>{{ c | translate }}</p>
+          </aside>
         }
       </div>
 
@@ -43,6 +120,13 @@
         <a href="tel:0745547530" class="cta-btn-ghost">☎ 0745 547 530</a>
         <a href="tel:0745647530" class="cta-btn-ghost">☎ 0745 647 530</a>
       </aside>
+    </div>
+  </section>
+
+  <section class="faq-band">
+    <div class="container faq-inner" paxRevealOnScroll>
+      <p class="faq-subtitle">{{ 'serviceDetail.faqSubtitle' | translate }}</p>
+      <a href="tel:0745547530" class="cta-btn-primary">{{ 'serviceDetail.faqCta' | translate }}</a>
     </div>
   </section>
 

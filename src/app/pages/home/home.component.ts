@@ -37,8 +37,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   readonly testimonialKeys = ['t1', 't2', 't3'];
 
+  // Step-by-step funeral guide — steps 1–3 are paragraphs, 4–5 have intro + 5 list items each
+  readonly guideSteps = [1, 2, 3, 4, 5].map(n => ({
+    n,
+    title: `home.guide.step${n}Title`,
+    text: n <= 3 ? `home.guide.step${n}Text` : `home.guide.step${n}Intro`,
+    items: n >= 4 ? [1, 2, 3, 4, 5].map(i => `home.guide.step${n}Item${i}`) : [],
+  }));
+
   // Translation keys — resolved by the translate pipe inside pax-faq-accordion
-  readonly faqItems: FaqItem[] = [1, 2, 3, 4, 5, 6].map(n => ({
+  readonly faqItems: FaqItem[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => ({
     question: `faq.q${n}`,
     answer: `faq.a${n}`,
   }));

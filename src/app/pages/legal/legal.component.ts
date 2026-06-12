@@ -2,94 +2,177 @@ import { Component, inject, OnInit, computed } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SeoService } from '../../core/services/seo.service';
 
-const LEGAL_CONTENT: Record<string, { title: string; body: string }> = {
+interface LegalSection {
+  /** i18n key (relative to page namespace) for the section heading */
+  title?: string;
+  /** render heading as a sub-heading (h3) */
+  sub?: boolean;
+  /** paragraph keys rendered before the list */
+  paragraphs?: string[];
+  /** list item keys */
+  items?: string[];
+  /** paragraph keys rendered after the list (notes, contact lines) */
+  after?: string[];
+}
+
+interface LegalPage {
+  /** namespace under `legal.` in the i18n files */
+  ns: string;
+  /** optional subtitle key (relative) shown under the page title */
+  subtitle?: string;
+  sections: LegalSection[];
+  /** closing paragraph keys (relative) rendered after all sections */
+  closing?: string[];
+}
+
+/** Builds ['<prefix>1', ..., '<prefix>N'] */
+const items = (prefix: string, count: number): string[] =>
+  Array.from({ length: count }, (_, i) => `${prefix}${i + 1}`);
+
+const LEGAL_PAGES: Record<string, LegalPage> = {
   'politica-de-confidentialitate': {
-    title: 'Politică de Confidențialitate',
-    body: `<h2>1. Informații generale</h2>
-<p>Casa Funerară PAX colectează și procesează datele dumneavoastră personale în conformitate cu Regulamentul (UE) 2016/679 (GDPR) și legislația națională aplicabilă.</p>
-<h2>2. Date colectate</h2>
-<p>Colectăm datele pe care ni le furnizați prin formularul de contact: nume, email, telefon, mesaj. Aceste date sunt folosite exclusiv pentru a răspunde solicitărilor dumneavoastră.</p>
-<h2>3. Drepturi</h2>
-<p>Aveți dreptul de acces, rectificare, ștergere, restricționare a prelucrării și portabilitate a datelor. Pentru exercitarea acestor drepturi, contactați-ne la contact@paxfunerar.ro.</p>
-<h2>4. Contact DPO</h2>
-<p>Pentru orice întrebare privind prelucrarea datelor: contact@paxfunerar.ro | 0745 547 530</p>`,
+    ns: 'confidentialitate',
+    sections: [
+      { title: 's1Title', paragraphs: ['s1Text'] },
+      { title: 's2Title', paragraphs: ['s2Intro'], items: items('s2Item', 6) },
+      { title: 's3Title', paragraphs: ['s3Intro'], items: items('s3Item', 5) },
+      { title: 's4Title', paragraphs: ['s4Intro'], items: items('s4Item', 4) },
+      { title: 's5Title', paragraphs: ['s5Intro'], items: items('s5Item', 3), after: ['s5Note'] },
+      { title: 's6Title', paragraphs: ['s6Intro'], items: items('s6Item', 3) },
+      { title: 's7Title', paragraphs: ['s7Intro'], items: items('s7Item', 8), after: ['s7Contact'] },
+      { title: 's8Title', paragraphs: ['s8Text'] },
+      { title: 's9Title', paragraphs: ['s9Text'] },
+    ],
+    closing: ['contactNote'],
   },
   'politica-de-cookies': {
-    title: 'Politică de Cookies',
-    body: `<h2>Ce sunt cookie-urile?</h2>
-<p>Cookie-urile sunt fișiere mici stocate pe dispozitivul dumneavoastră atunci când vizitați un site web. Acestea ajută la funcționarea corectă a site-ului.</p>
-<h2>Cookie-uri utilizate</h2>
-<p>Utilizăm cookie-uri tehnice esențiale pentru funcționarea site-ului (preferința limbii, sesiune). Nu utilizăm cookie-uri de tracking sau publicitate terță.</p>
-<h2>Gestionare</h2>
-<p>Puteți dezactiva cookie-urile din setările browserului. Dezactivarea cookie-urilor esențiale poate afecta funcționalitatea site-ului.</p>`,
+    ns: 'cookies',
+    sections: [
+      { title: 's1Title', paragraphs: ['s1Text'] },
+      { title: 's2Title' },
+      { title: 's2aTitle', sub: true, paragraphs: ['s2aText'] },
+      { title: 's2bTitle', sub: true, paragraphs: ['s2bText'] },
+      { title: 's2cTitle', sub: true, paragraphs: ['s2cText'] },
+      { title: 's3Title', paragraphs: ['s3Text'] },
+      { title: 's4Title', paragraphs: ['s4Text'] },
+      { title: 's5Title', paragraphs: ['s5Text'] },
+    ],
   },
   'termeni-si-conditii': {
-    title: 'Termeni și Condiții',
-    body: `<h2>1. Utilizarea site-ului</h2>
-<p>Prin accesarea site-ului paxfunerar.ro, acceptați acești termeni și condiții. Site-ul este furnizat "ca atare" și poate fi modificat oricând.</p>
-<h2>2. Produse și servicii</h2>
-<p>Prețurile afișate sunt orientative. Prețurile finale se stabilesc la cerere, în funcție de specificul serviciului solicitat. Casa Funerară PAX își rezervă dreptul de a modifica prețurile fără notificare prealabilă.</p>
-<h2>3. Proprietate intelectuală</h2>
-<p>Tot conținutul acestui site (texte, imagini, logo) este proprietatea Casa Funerară PAX și este protejat de legile drepturilor de autor.</p>`,
+    ns: 'termeni',
+    subtitle: 'subtitle',
+    sections: [
+      { title: 's1Title', paragraphs: ['s1Text'] },
+      { title: 's2Title', paragraphs: ['s2Text'] },
+      { title: 's3Title', paragraphs: ['s3Text'] },
+      { title: 's4Title', paragraphs: ['s4Text'] },
+      { title: 's5Title', paragraphs: ['s5Text'] },
+      { title: 's6Title', paragraphs: ['s6Intro'], items: items('s6Item', 4) },
+      { title: 's7Title', paragraphs: ['s7Text'] },
+      { title: 's8Title', paragraphs: ['s8Text'] },
+      { title: 's9Title', paragraphs: ['s9Text'] },
+    ],
   },
   'politica-de-reclamatii': {
-    title: 'Politică de Reclamații',
-    body: `<h2>Procedura de reclamații</h2>
-<p>Orice reclamație referitoare la serviciile sau produsele noastre poate fi transmisă prin:</p>
-<ul>
-<li>Email: contact@paxfunerar.ro</li>
-<li>Telefon: 0745 547 530</li>
-<li>Poștă: Strada Alexandru Papiu Ilarian 10, Târgu Mureș</li>
-</ul>
-<h2>Termen de soluționare</h2>
-<p>Reclamațiile vor fi analizate și soluționate în termen de 30 de zile calendaristice de la data primirii.</p>`,
+    ns: 'reclamatii',
+    subtitle: 'subtitle',
+    sections: [
+      { title: 's1Title', paragraphs: ['s1Intro'], items: items('s1Item', 3) },
+      {
+        title: 's2Title',
+        paragraphs: ['s2Intro'],
+        items: ['s2Email', 's2Phone', 's2Post', 's2Form'],
+        after: ['s2Note'],
+      },
+      { title: 's3Title', items: items('s3Item', 3) },
+      { title: 's4Title', paragraphs: ['s4Intro'], items: items('s4Item', 4) },
+      { title: 's5Title', paragraphs: ['s5Text'] },
+      { title: 's6Title', paragraphs: ['s6Intro'], items: items('s6Item', 2) },
+      { title: 's7Title', paragraphs: ['s7Text'] },
+    ],
   },
   'politica-clienti': {
-    title: 'Politică Clienți',
-    body: `<h2>Angajamentele noastre față de clienți</h2>
-<p>Casa Funerară PAX se angajează să ofere servicii de cea mai înaltă calitate, tratând fiecare client cu empatie, respect și profesionalism.</p>
-<h2>Standardele noastre</h2>
-<ul>
-<li>Răspuns la apeluri în maxim 5 minute</li>
-<li>Preluare non-stop, 24/7</li>
-<li>Transparență totală în privința costurilor</li>
-<li>Personal certificat și instruit</li>
-<li>Respectarea tradițiilor și dorințelor familiei</li>
-</ul>`,
+    ns: 'clienti',
+    subtitle: 'fullTitle',
+    sections: [
+      { title: 's1Title', paragraphs: ['s1Intro'], items: items('s1Item', 6) },
+      { title: 's2Title', paragraphs: ['s2Intro'], items: items('s2Item', 5) },
+      { title: 's3Title', paragraphs: ['s3Intro'], items: items('s3Item', 3) },
+      { title: 's4Title', paragraphs: ['s4Intro'], items: items('s4Item', 3), after: ['s4Note'] },
+      { title: 's5Title', paragraphs: ['s5Intro'], items: items('s5Item', 3) },
+      { title: 's6Title', paragraphs: ['s6Intro'], items: items('s6Item', 6), after: ['s6Contact'] },
+      { title: 's7Title', paragraphs: ['s7Text'] },
+      { title: 's8Title', paragraphs: ['s8Text'] },
+    ],
   },
 };
 
 @Component({
   selector: 'pax-legal',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, TranslateModule],
   template: `
-    <section class="page-hero">
-      <div class="container">
-        <h1>{{ page()?.title }}</h1>
+    @if (page(); as p) {
+      <section class="page-hero">
+        <div class="container">
+          <h1>{{ base() + '.pageTitle' | translate }}</h1>
+          @if (p.subtitle) {
+            <p class="legal-subtitle">{{ base() + '.' + p.subtitle | translate }}</p>
+          }
+          <p class="legal-updated">{{ base() + '.lastUpdate' | translate }}</p>
+        </div>
+      </section>
+      <section class="legal-body">
+        <div class="container legal-content">
+          <p class="legal-intro">{{ base() + '.intro' | translate }}</p>
+          @for (section of p.sections; track $index) {
+            @if (section.title) {
+              @if (section.sub) {
+                <h3>{{ base() + '.' + section.title | translate }}</h3>
+              } @else {
+                <h2>{{ base() + '.' + section.title | translate }}</h2>
+              }
+            }
+            @for (key of section.paragraphs ?? []; track key) {
+              <p>{{ base() + '.' + key | translate }}</p>
+            }
+            @if (section.items?.length) {
+              <ul>
+                @for (key of section.items!; track key) {
+                  <li>{{ base() + '.' + key | translate }}</li>
+                }
+              </ul>
+            }
+            @for (key of section.after ?? []; track key) {
+              <p>{{ base() + '.' + key | translate }}</p>
+            }
+          }
+          @for (key of p.closing ?? []; track key) {
+            <p class="legal-closing">{{ base() + '.' + key | translate }}</p>
+          }
+        </div>
+      </section>
+      <div class="container back-section">
+        <a routerLink="/" class="back-link">← {{ 'nav.home' | translate }}</a>
       </div>
-    </section>
-    <section class="legal-body">
-      <div class="container legal-content" [innerHTML]="page()?.body"></div>
-    </section>
-    <div class="container back-section">
-      <a routerLink="/" class="back-link">← Înapoi acasă</a>
-    </div>
+    }
   `,
   styles: [`
-    @use '../../../styles/variables' as *;
     .page-hero { background: var(--gradient-hero); padding-block: var(--space-12); }
     h1 { font-size: var(--text-3xl); }
+    .legal-subtitle { color: var(--color-text-secondary); margin-top: var(--space-2); }
+    .legal-updated { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-2); }
     .legal-body { padding-block: var(--space-12); }
     .legal-content { max-width: 800px; line-height: 1.8; }
-    :host ::ng-deep {
-      h2 { font-size: var(--text-xl); margin-block: var(--space-8) var(--space-4); }
-      p { color: var(--color-text-secondary); margin-bottom: var(--space-4); }
-      ul { color: var(--color-text-secondary); padding-left: var(--space-6); }
-      li { margin-bottom: var(--space-2); }
-    }
+    h2 { font-size: var(--text-xl); margin-block: var(--space-8) var(--space-4); }
+    h3 { font-size: var(--text-lg); margin-block: var(--space-6) var(--space-3); }
+    p { color: var(--color-text-secondary); margin-bottom: var(--space-4); }
+    ul { color: var(--color-text-secondary); padding-left: var(--space-6); margin-bottom: var(--space-4); }
+    li { margin-bottom: var(--space-2); }
+    .legal-intro, .legal-closing { color: var(--color-text-secondary); }
     .back-section { padding-bottom: var(--space-12); }
     .back-link { font-size: var(--text-sm); color: var(--color-text-muted); }
     .back-link:hover { color: var(--color-accent); }
@@ -98,21 +181,27 @@ const LEGAL_CONTENT: Record<string, { title: string; body: string }> = {
 export class LegalComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SeoService);
+  private readonly translate = inject(TranslateService);
 
   private readonly slug = toSignal(
     this.route.data.pipe(map((d: { slug?: string }) => d['slug'] ?? '')),
     { initialValue: '' },
   );
 
-  readonly page = computed(() => LEGAL_CONTENT[this.slug()] ?? null);
+  readonly page = computed(() => LEGAL_PAGES[this.slug()] ?? null);
+  readonly base = computed(() => `legal.${this.page()?.ns}`);
 
   ngOnInit(): void {
     const p = this.page();
     if (p) {
-      this.seo.setPage({
-        title: `${p.title} | Casa Funerară PAX`,
-        description: `${p.title} — Casa Funerară PAX Târgu Mureș`,
-        canonical: `https://paxfunerar.ro/${this.slug()}`,
+      const slug = this.slug();
+      // translations load async over HTTP — resolve the title once available
+      this.translate.get(`legal.${p.ns}.pageTitle`).subscribe((title: string) => {
+        this.seo.setPage({
+          title: `${title} | Casa Funerară PAX`,
+          description: `${title} — Casa Funerară PAX Târgu Mureș`,
+          canonical: `https://paxfunerar.ro/${slug}`,
+        });
       });
     }
   }

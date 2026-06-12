@@ -4,6 +4,9 @@
     <p class="page-hero-desc reveal-hidden">
       {{ 'shop.desc' | translate }}
     </p>
+    <a class="floral-note reveal-hidden" href="tel:0741115864">
+      🌸 {{ 'shop.floralNote' | translate }}
+    </a>
   </div>
 </section>
 
@@ -25,18 +28,18 @@
         <article class="product-card" (click)="openProduct(product)" role="button" tabindex="0"
           (keydown.enter)="openProduct(product)">
           <div class="product-image-wrap">
-            <div class="product-image-placeholder" aria-hidden="true">📦</div>
+            <div class="product-image-placeholder" aria-hidden="true">💐</div>
           </div>
           <div class="product-info">
-            <h3 class="product-name">{{ product.name }}</h3>
-            <p class="product-short">{{ product.shortDesc }}</p>
+            <h3 class="product-name">{{ product.name | translate }}</h3>
+            <p class="product-short">{{ product.shortDesc | translate }}</p>
             <div class="product-footer">
               <span class="product-price">{{ product.price | number:'1.0-0' }} RON</span>
               <button
                 type="button"
                 class="add-btn"
                 (click)="addToCartDirect(product, $event)"
-                [attr.aria-label]="('common.addToCart' | translate) + ' ' + product.name"
+                [attr.aria-label]="('common.addToCart' | translate) + ' ' + (product.name | translate)"
               >+</button>
             </div>
           </div>
@@ -56,15 +59,15 @@
     aria-hidden="true"
   ></div>
 
-  <div class="product-modal-panel" role="dialog" [attr.aria-label]="p.name" tabindex="0" (keydown)="onKeydown($event)">
+  <div class="product-modal-panel" role="dialog" [attr.aria-label]="p.name | translate" tabindex="0" (keydown)="onKeydown($event)">
     <button class="modal-close" type="button" (click)="closeProduct()" [attr.aria-label]="'common.close' | translate">✕</button>
 
     <div class="product-modal-body">
-      <div class="product-modal-image" aria-hidden="true">📦</div>
+      <div class="product-modal-image" aria-hidden="true">💐</div>
       <div class="product-modal-info">
-        <h2>{{ p.name }}</h2>
+        <h2>{{ p.name | translate }}</h2>
         <p class="product-modal-price">{{ p.price | number:'1.0-0' }} RON</p>
-        <p>{{ p.description }}</p>
+        <p>{{ p.description | translate }}</p>
 
         <div class="qty-row">
           <button type="button" class="qty-btn" (click)="decrement()" [attr.aria-label]="'cart.decreaseQty' | translate">−</button>
