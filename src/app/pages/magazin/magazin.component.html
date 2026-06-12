@@ -1,8 +1,8 @@
 <section class="page-hero">
   <div class="container">
-    <h1 class="page-hero-title reveal-hidden">Magazin Funerar</h1>
+    <h1 class="page-hero-title reveal-hidden">{{ 'shop.title' | translate }}</h1>
     <p class="page-hero-desc reveal-hidden">
-      Produse funerare de calitate — lumânări, coroane, urne, fotoceramică și accesorii.
+      {{ 'shop.desc' | translate }}
     </p>
   </div>
 </section>
@@ -16,7 +16,7 @@
           class="filter-btn"
           [class.active]="activeCategory() === cat.id"
           (click)="setCategory(cat.id)"
-        >{{ cat.label }}</button>
+        >{{ cat.labelKey | translate }}</button>
       }
     </div>
 
@@ -31,12 +31,12 @@
             <h3 class="product-name">{{ product.name }}</h3>
             <p class="product-short">{{ product.shortDesc }}</p>
             <div class="product-footer">
-              <span class="product-price">{{ product.price | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+              <span class="product-price">{{ product.price | number:'1.0-0' }} RON</span>
               <button
                 type="button"
                 class="add-btn"
                 (click)="addToCartDirect(product, $event)"
-                [attr.aria-label]="'Adaugă în coș ' + product.name"
+                [attr.aria-label]="('common.addToCart' | translate) + ' ' + product.name"
               >+</button>
             </div>
           </div>
@@ -57,23 +57,23 @@
   ></div>
 
   <div class="product-modal-panel" role="dialog" [attr.aria-label]="p.name" tabindex="0" (keydown)="onKeydown($event)">
-    <button class="modal-close" type="button" (click)="closeProduct()" aria-label="Închide">✕</button>
+    <button class="modal-close" type="button" (click)="closeProduct()" [attr.aria-label]="'common.close' | translate">✕</button>
 
     <div class="product-modal-body">
       <div class="product-modal-image" aria-hidden="true">📦</div>
       <div class="product-modal-info">
         <h2>{{ p.name }}</h2>
-        <p class="product-modal-price">{{ p.price | currency:'RON':'symbol':'1.0-0':'ro' }} RON</p>
+        <p class="product-modal-price">{{ p.price | number:'1.0-0' }} RON</p>
         <p>{{ p.description }}</p>
 
         <div class="qty-row">
-          <button type="button" class="qty-btn" (click)="decrement()" aria-label="Scade cantitate">−</button>
+          <button type="button" class="qty-btn" (click)="decrement()" [attr.aria-label]="'cart.decreaseQty' | translate">−</button>
           <span class="qty-val" aria-live="polite">{{ productQty() }}</span>
-          <button type="button" class="qty-btn" (click)="increment()" aria-label="Crește cantitate">+</button>
+          <button type="button" class="qty-btn" (click)="increment()" [attr.aria-label]="'cart.increaseQty' | translate">+</button>
         </div>
 
         <button type="button" class="cta-btn-primary full-w" (click)="addToCart(p)">
-          Adaugă în coș — {{ p.price * productQty() | currency:'RON':'symbol':'1.0-0':'ro' }} RON
+          {{ 'common.addToCart' | translate }} — {{ p.price * productQty() | number:'1.0-0' }} RON
         </button>
       </div>
     </div>

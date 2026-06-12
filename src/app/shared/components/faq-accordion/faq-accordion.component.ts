@@ -1,5 +1,7 @@
 import { Component, input, signal } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
+/** question/answer are i18n keys (raw strings also work — missing keys fall through). */
 export interface FaqItem {
   question: string;
   answer: string;
@@ -8,7 +10,7 @@ export interface FaqItem {
 @Component({
   selector: 'pax-faq-accordion',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './faq-accordion.component.html',
   styleUrl: './faq-accordion.component.scss',
 })

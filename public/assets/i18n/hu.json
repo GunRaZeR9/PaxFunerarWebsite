@@ -5,7 +5,8 @@
     "shop": "Üzlet",
     "about": "Rólunk",
     "contact": "Kapcsolat",
-    "cart": "Bevásárlókosár"
+    "cart": "Bevásárlókosár",
+    "menu": "Menü"
   },
   "common": {
     "learnMore": "Tudjon meg többet",
@@ -21,12 +22,133 @@
       "title": "Teljes körű temetkezési szolgáltatások",
       "subtitle": "Marosvásárhelyen",
       "description": "Ezekben a nehéz pillanatokban elkötelezetten állunk Ön mellett, empátiával és tisztelettel."
+    },
+    "services": {
+      "title": "Szolgáltatásaink",
+      "subtitle": "Teljes körű temetkezési szolgáltatások, tisztelettel és méltósággal, non-stop Marosvásárhelyen.",
+      "all": "Összes szolgáltatás megtekintése"
+    },
+    "about": {
+      "title": "A PAX Temetkezési Vállalatról",
+      "tagline": "Megértés és útmutatás az út minden lépésében",
+      "text": "A PAX Temetkezési Vállalat elkötelezett abban, hogy a marosvásárhelyi és környékbeli családoknak teljes körű, professzionális és empatikus temetkezési szolgáltatásokat nyújtson. Átvállalunk minden adminisztratív és logisztikai feladatot, hogy a család a gyászra és a kedves emlékekre összpontosíthasson.",
+      "cta": "Tudjon meg többet rólunk"
+    },
+    "faqTitle": "Gyakori Kérdések"
+  },
+  "faq": {
+    "q1": "Mit kell tennem közvetlenül egy haláleset után?",
+    "a1": "Hívjon minket a 0745 547 530-as számon — non-stop válaszolunk. Azonnal átvállalunk minden teendőt: a halál megállapítását, a szállítást és a szükséges iratokat, lépésről lépésre, a család mellett.",
+    "q2": "Milyen iratok szükségesek a temetés megszervezéséhez?",
+    "a2": "A halottvizsgálati bizonyítvány, valamint az elhunyt és a hozzátartozó személyazonossági iratai. A halotti anyakönyvi kivonat és a temetési engedély beszerzését mi intézzük.",
+    "q3": "Non-stop elérhetők?",
+    "a3": "Igen. A nap 24 órájában, a hét 7 napján rendelkezésre állunk, hétvégén és ünnepnapokon is. Az első hívásra azonnal intézkedünk.",
+    "q4": "Foglalkoznak külföldről történő hazaszállítással?",
+    "a4": "Igen, teljes körű hazaszállítási szolgáltatást nyújtunk bármely európai országból: konzuli formalitások, dokumentáció és nemzetközi szállítás.",
+    "q5": "Hogyan vehetem igénybe a temetési segélyt?",
+    "a5": "Tanácsadást nyújtunk és előkészítjük a Nyugdíjpénztár által nyújtott temetési segély igényléséhez szükséges iratokat, függetlenül attól, hogy az elhunyt nyugdíjas vagy biztosított volt-e.",
+    "q6": "Személyre szabhatók a temetkezési szolgáltatások?",
+    "a6": "Természetesen. Minden szertartást a család kívánságai és hagyományai szerint szervezünk — egyházi vagy polgári formában, a részletek teljes személyre szabásával."
+  },
+  "testimonials": {
+    "title": "Mit mondanak a családok",
+    "t1": {
+      "text": "„Azon a reggelen nem tudtam, hol kezdjem. Az első hívásra válaszoltak, és mindent olyan gondoskodással vettek át. Nem is tudom, hogyan köszönhettük volna meg másképp.\"",
+      "author": "— Marosvásárhelyi család"
+    },
+    "t2": {
+      "text": "„Köszönöm a diszkrét módot, ahogyan mellettünk álltak a legnehezebb pillanatokban. Mindent méltósággal és szívvel kezeltek.\"",
+      "author": "— Szászrégeni család"
+    },
+    "t3": {
+      "text": "„Amikor már nem tudtuk, mi következik, lépésről lépésre elmondták a teendőket, türelemmel és sietség nélkül. Többek voltak, mint egy szolgáltatás — támaszt jelentettek.\"",
+      "author": "— Marosvásárhelyi család"
     }
   },
-  "footer": {
-    "address": "Alexandru Papiu Ilarian utca 10, Marosvásárhely",
-    "email": "contact@paxfunerar.ro",
-    "rights": "Minden jog fenntartva"
+  "ctaBanner": {
+    "title": "Non-stop Ön mellett állunk",
+    "text": "Hívjon minket bármikor. Azonnal intézkedünk."
+  },
+  "services": {
+    "title": "Temetkezési Szolgáltatások",
+    "desc": "A PAX Temetkezési Vállalat teljes körű szolgáltatásokat nyújt, tisztelettel és méltósággal, non-stop Marosvásárhelyen."
+  },
+  "serviceDetail": {
+    "includes": "Mit tartalmaz",
+    "helpTitle": "Segítségre van szüksége?",
+    "helpText": "Non-stop rendelkezésre állunk. Lépjen kapcsolatba velünk most.",
+    "backAll": "← Összes temetkezési szolgáltatás",
+    "notFound": "A szolgáltatás nem található",
+    "back": "← Vissza a szolgáltatásokhoz"
+  },
+  "shop": {
+    "title": "Temetkezési Üzlet",
+    "desc": "Minőségi temetkezési termékek — gyertyák, koszorúk, urnák, fotókerámia és kiegészítők.",
+    "cat": {
+      "all": "Összes",
+      "lumanari": "Gyertyák",
+      "coroane": "Virágkoszorúk",
+      "urne": "Urnák",
+      "fotoceramica": "Fotókerámia",
+      "sicrie": "Koporsók",
+      "accesorii": "Kiegészítők"
+    }
+  },
+  "contact": {
+    "title": "Kapcsolat",
+    "subtitle": "Non-stop rendelkezésre állunk. Keressen minket bármikor.",
+    "info": {
+      "title": "Elérhetőségek",
+      "phone": "Telefon (non-stop)",
+      "phoneFloral": "0741 115 864 (virág)",
+      "email": "Email",
+      "address": "Cím",
+      "addressLine1": "Alexandru Papiu Ilarian utca 10",
+      "addressLine2": "Marosvásárhely, Maros megye",
+      "schedule": "Nyitvatartás",
+      "scheduleValue": "Non-stop, 24/7, az év 365 napján"
+    },
+    "form": {
+      "title": "Üzenet küldése",
+      "name": "Név",
+      "namePh": "Az Ön neve",
+      "nameError": "Adja meg a nevét (legalább 2 karakter)",
+      "email": "Email",
+      "emailPh": "email@pelda.ro",
+      "emailError": "Adjon meg egy érvényes email-címet",
+      "phone": "Telefon",
+      "phonePh": "07xx xxx xxx",
+      "service": "Igényelt szolgáltatás",
+      "servicePh": "— Válasszon szolgáltatást —",
+      "message": "Üzenet",
+      "messagePh": "Írja le a helyzetet vagy a kérdését...",
+      "messageError": "Írjon üzenetet (legalább 10 karakter)",
+      "submit": "Üzenet küldése",
+      "sending": "Küldés folyamatban..."
+    },
+    "success": {
+      "title": "Üzenet sikeresen elküldve!",
+      "text": "A lehető legrövidebb időn belül felvesszük Önnel a kapcsolatot."
+    }
+  },
+  "about": {
+    "title": "A PAX Temetkezési Vállalatról",
+    "tagline": "Megértés és útmutatás az út minden lépésében",
+    "whoTitle": "Kik vagyunk",
+    "p1": "A PAX Temetkezési Vállalat hosszú szakmai tapasztalattal rendelkező cég, amely elkötelezett abban, hogy a marosvásárhelyi és környékbeli családoknak teljes körű, professzionális és empatikus temetkezési szolgáltatásokat nyújtson.",
+    "p2": "Tudjuk, hogy minden veszteség egyedi, és minden család személyre szabott támogatást érdemel. Csapatunk készen áll átvállalni minden adminisztratív és logisztikai feladatot, hogy a család a gyászra és a kedves emlékekre összpontosíthasson.",
+    "p3": "Non-stop rendelkezésre állunk, a nap 24 órájában, a hét 7 napján, az év 365 napján. Az első hívásra azonnal intézkedünk.",
+    "values": {
+      "empathy": { "title": "Empátia", "text": "Minden családot érzékenységgel és a pillanat mély megértésével kezelünk." },
+      "professionalism": { "title": "Professzionalizmus", "text": "Képzett személyzet, tanúsított eljárások és modern felszerelés." },
+      "availability": { "title": "Elérhetőség", "text": "Non-stop, 24/7. Az első hívásra intézkedünk, bármely órában." },
+      "discretion": { "title": "Diszkréció", "text": "Tiszteletben tartjuk a család magánéletét, és minden helyzetet diszkréten kezelünk." }
+    },
+    "cta": {
+      "title": "Ön mellett állunk",
+      "text": "Hívjon minket bármikor. Azonnal intézkedünk, non-stop.",
+      "button": "Üzenet küldése"
+    }
   },
   "cart": {
     "title": "Bevásárlókosár",
@@ -37,17 +159,23 @@
     "checkout": "Rendelés véglegesítése",
     "checkoutSoon": "Az online fizetés hamarosan elérhető lesz.",
     "remove": "Termék eltávolítása",
+    "decreaseQty": "Mennyiség csökkentése",
+    "increaseQty": "Mennyiség növelése",
     "clear": "Kosár ürítése"
   },
-  "contact": {
-    "title": "Kapcsolat",
-    "form": {
-      "name": "Név",
-      "email": "Email",
-      "phone": "Telefon",
-      "service": "Szolgáltatás",
-      "message": "Üzenet",
-      "submit": "Üzenet küldése"
-    }
+  "cookie": {
+    "title": "Cookie-hozzájárulás",
+    "text": "Ez a weboldal kizárólag a működéshez feltétlenül szükséges cookie-kat használja.",
+    "more": "Cookie-szabályzat",
+    "accept": "Megértettem"
+  },
+  "phoneSticky": {
+    "call": "Hívjon most: 0745 547 530",
+    "whatsapp": "Írjon nekünk WhatsAppon"
+  },
+  "footer": {
+    "address": "Alexandru Papiu Ilarian utca 10, Marosvásárhely",
+    "email": "contact@paxfunerar.ro",
+    "rights": "Minden jog fenntartva"
   }
 }

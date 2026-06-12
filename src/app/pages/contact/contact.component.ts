@@ -5,11 +5,12 @@ import { SERVICE_MAP } from '../servicii-funerare/services.data';
 import { SeoService } from '../../core/services/seo.service';
 import { AnimationService } from '../../core/services/animation.service';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'pax-contact',
   standalone: true,
-  imports: [ReactiveFormsModule, RevealOnScrollDirective],
+  imports: [ReactiveFormsModule, RevealOnScrollDirective, TranslateModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })

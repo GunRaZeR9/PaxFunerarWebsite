@@ -5,7 +5,8 @@
     "shop": "Magazin",
     "about": "Despre Noi",
     "contact": "Contact",
-    "cart": "Coș de Cumpărături"
+    "cart": "Coș de Cumpărături",
+    "menu": "Meniu"
   },
   "common": {
     "learnMore": "Află mai mult",
@@ -21,12 +22,133 @@
       "title": "Servicii Funerare Complete",
       "subtitle": "în Târgu Mureș",
       "description": "În aceste momente dificile, ne angajăm să fim alături de dumneavoastră, oferindu-vă empatie și respect."
+    },
+    "services": {
+      "title": "Serviciile Noastre",
+      "subtitle": "Servicii funerare complete, cu respect și demnitate, non-stop în Târgu Mureș.",
+      "all": "Vezi toate serviciile"
+    },
+    "about": {
+      "title": "Despre Casa Funerară PAX",
+      "tagline": "Înțelegere și îndrumare în fiecare pas al drumului",
+      "text": "Casa Funerară PAX este dedicată să ofere familiilor din Târgu Mureș și împrejurimi servicii funerare complete, profesioniste și cu empatie. Preluăm toate responsabilitățile administrative și logistice, astfel încât familia să se poată concentra pe reculegere și pe amintirile dragi.",
+      "cta": "Află mai multe despre noi"
+    },
+    "faqTitle": "Întrebări Frecvente"
+  },
+  "faq": {
+    "q1": "Ce trebuie să fac imediat după un deces?",
+    "a1": "Sunați-ne la 0745 547 530 — răspundem non-stop. Preluăm imediat toate demersurile: constatarea decesului, transportul și actele necesare, pas cu pas, alături de familie.",
+    "q2": "Ce acte sunt necesare pentru organizarea înmormântării?",
+    "a2": "Certificatul medical constatator al decesului și actele de identitate ale defunctului și ale aparținătorului. Ne ocupăm noi de obținerea certificatului de deces și a adeverinței de înhumare.",
+    "q3": "Sunteți disponibili non-stop?",
+    "a3": "Da. Suntem disponibili 24 de ore din 24, 7 zile pe săptămână, inclusiv în weekend și de sărbători legale. La primul apel, preluăm imediat.",
+    "q4": "Vă ocupați de repatrierea decedaților din străinătate?",
+    "a4": "Da, oferim servicii complete de repatriere din orice țară europeană: formalități consulare, documentație și transport internațional.",
+    "q5": "Cum pot beneficia de ajutorul de înmormântare?",
+    "a5": "Vă consiliem și pregătim documentele necesare pentru obținerea ajutorului de deces acordat de Casa de Pensii, indiferent dacă defunctul era pensionar sau asigurat.",
+    "q6": "Pot personaliza serviciile funerare?",
+    "a6": "Desigur. Fiecare ceremonie este organizată după dorințele și tradițiile familiei — religioasă sau civilă, cu personalizare completă a detaliilor."
+  },
+  "testimonials": {
+    "title": "Ce spun familiile noastre",
+    "t1": {
+      "text": "\"În dimineața aceea nu știam de unde să încep. Ați răspuns la primul apel și ați preluat totul cu atâta grijă. Nu știu cum v-am fi putut mulțumi altfel.\"",
+      "author": "— Familie din Târgu Mureș"
+    },
+    "t2": {
+      "text": "\"Vă mulțumesc pentru felul discret în care ați fost aproape de noi în cele mai grele momente. Ați tratat totul cu demnitate și cu suflet.\"",
+      "author": "— Familie din Reghin"
+    },
+    "t3": {
+      "text": "\"Când nu mai știam ce urmează, ne-ați spus pașii pe rând, cu răbdare și fără grabă. Ați fost mai mult decât un serviciu — ați fost un sprijin.\"",
+      "author": "— Familie din Târgu Mureș"
     }
   },
-  "footer": {
-    "address": "Strada Alexandru Papiu Ilarian 10, Târgu Mureș",
-    "email": "contact@paxfunerar.ro",
-    "rights": "Toate drepturile rezervate"
+  "ctaBanner": {
+    "title": "Suntem alături de dumneavoastră non-stop",
+    "text": "Apelați-ne oricând. Preluăm imediat."
+  },
+  "services": {
+    "title": "Servicii Funerare",
+    "desc": "Casa Funerară PAX oferă servicii complete, cu respect și demnitate, non-stop în Târgu Mureș."
+  },
+  "serviceDetail": {
+    "includes": "Ce includem",
+    "helpTitle": "Aveți nevoie de ajutor?",
+    "helpText": "Suntem disponibili non-stop. Contactați-ne acum.",
+    "backAll": "← Toate serviciile funerare",
+    "notFound": "Serviciu negăsit",
+    "back": "← Înapoi la servicii"
+  },
+  "shop": {
+    "title": "Magazin Funerar",
+    "desc": "Produse funerare de calitate — lumânări, coroane, urne, fotoceramică și accesorii.",
+    "cat": {
+      "all": "Toate",
+      "lumanari": "Lumânări",
+      "coroane": "Coroane Florale",
+      "urne": "Urne",
+      "fotoceramica": "Fotoceramică",
+      "sicrie": "Sicrie",
+      "accesorii": "Accesorii"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Suntem disponibili non-stop. Contactați-ne oricând.",
+    "info": {
+      "title": "Informații Contact",
+      "phone": "Telefon (non-stop)",
+      "phoneFloral": "0741 115 864 (floral)",
+      "email": "Email",
+      "address": "Adresă",
+      "addressLine1": "Strada Alexandru Papiu Ilarian 10",
+      "addressLine2": "Târgu Mureș, Mureș",
+      "schedule": "Program",
+      "scheduleValue": "Non-stop, 24/7, 365 de zile pe an"
+    },
+    "form": {
+      "title": "Trimite un mesaj",
+      "name": "Nume",
+      "namePh": "Numele dumneavoastră",
+      "nameError": "Introduceți numele (minim 2 caractere)",
+      "email": "Email",
+      "emailPh": "email@exemplu.ro",
+      "emailError": "Introduceți o adresă de email validă",
+      "phone": "Telefon",
+      "phonePh": "07xx xxx xxx",
+      "service": "Serviciu solicitat",
+      "servicePh": "— Alegeți un serviciu —",
+      "message": "Mesaj",
+      "messagePh": "Descrieți situația sau întrebarea dumneavoastră...",
+      "messageError": "Introduceți un mesaj (minim 10 caractere)",
+      "submit": "Trimite Mesajul",
+      "sending": "Se trimite..."
+    },
+    "success": {
+      "title": "Mesaj trimis cu succes!",
+      "text": "Vă vom contacta în cel mai scurt timp posibil."
+    }
+  },
+  "about": {
+    "title": "Despre Casa Funerară PAX",
+    "tagline": "Înțelegere și îndrumare în fiecare pas al drumului",
+    "whoTitle": "Cine suntem",
+    "p1": "Casa Funerară PAX este o companie cu experiență în domeniu îndelungată, dedicată să ofere familiilor din Târgu Mureș și împrejurimi servicii funerare complete, profesioniste și cu empatie.",
+    "p2": "Înțelegem că fiecare pierdere este unică și că fiecare familie merită un sprijin personalizat. Echipa noastră este pregătită să preia toate responsabilitățile administrative și logistice, astfel încât familia să se poată concentra pe reculegere și pe amintirile dragi.",
+    "p3": "Suntem disponibili non-stop, 24 de ore pe zi, 7 zile pe săptămână, 365 de zile pe an. La primul apel, preluăm imediat.",
+    "values": {
+      "empathy": { "title": "Empatie", "text": "Tratăm fiecare familie cu sensibilitate și înțelegere profundă a momentului." },
+      "professionalism": { "title": "Profesionalism", "text": "Personal calificat, proceduri certificate și echipamente moderne." },
+      "availability": { "title": "Disponibilitate", "text": "Non-stop, 24/7. Preluăm la primul apel, indiferent de oră." },
+      "discretion": { "title": "Discreție", "text": "Respectăm intimitatea familiei și gestionăm cu discreție orice situație." }
+    },
+    "cta": {
+      "title": "Suntem alături de dumneavoastră",
+      "text": "Apelați-ne oricând. Preluăm imediat, non-stop.",
+      "button": "Trimite un mesaj"
+    }
   },
   "cart": {
     "title": "Coș de Cumpărături",
@@ -37,17 +159,23 @@
     "checkout": "Finalizează comanda",
     "checkoutSoon": "Plata online va fi disponibilă în curând.",
     "remove": "Șterge produsul",
+    "decreaseQty": "Scade cantitatea",
+    "increaseQty": "Crește cantitatea",
     "clear": "Golește coșul"
   },
-  "contact": {
-    "title": "Contact",
-    "form": {
-      "name": "Nume",
-      "email": "Email",
-      "phone": "Telefon",
-      "service": "Serviciu",
-      "message": "Mesaj",
-      "submit": "Trimite Mesajul"
-    }
+  "cookie": {
+    "title": "Consimțământ cookie-uri",
+    "text": "Acest site folosește cookie-uri strict necesare pentru funcționare.",
+    "more": "Politica de cookie-uri",
+    "accept": "Am înțeles"
+  },
+  "phoneSticky": {
+    "call": "Sună acum: 0745 547 530",
+    "whatsapp": "Scrie-ne pe WhatsApp"
+  },
+  "footer": {
+    "address": "Strada Alexandru Papiu Ilarian 10, Târgu Mureș",
+    "email": "contact@paxfunerar.ro",
+    "rights": "Toate drepturile rezervate"
   }
 }

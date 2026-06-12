@@ -11,9 +11,9 @@
 
 <section class="services-section">
   <div class="container">
-    <h2 class="section-title" paxRevealOnScroll>Serviciile Noastre</h2>
+    <h2 class="section-title" paxRevealOnScroll>{{ 'home.services.title' | translate }}</h2>
     <p class="section-subtitle" paxRevealOnScroll>
-      Servicii funerare complete, cu respect și demnitate, non-stop în Târgu Mureș.
+      {{ 'home.services.subtitle' | translate }}
     </p>
     <div class="services-grid">
       @for (service of teaserServices; track service.slug) {
@@ -25,51 +25,39 @@
       }
     </div>
     <div class="services-more" paxRevealOnScroll>
-      <a routerLink="/servicii-funerare" class="cta-btn-ghost">Vezi toate serviciile</a>
+      <a routerLink="/servicii-funerare" class="cta-btn-ghost">{{ 'home.services.all' | translate }}</a>
     </div>
   </div>
 </section>
 
 <section class="about-teaser">
   <div class="container about-teaser-inner" paxRevealOnScroll>
-    <h2 class="section-title">Despre Casa Funerară PAX</h2>
-    <p class="about-tagline">Înțelegere și îndrumare în fiecare pas al drumului</p>
+    <h2 class="section-title">{{ 'home.about.title' | translate }}</h2>
+    <p class="about-tagline">{{ 'home.about.tagline' | translate }}</p>
     <p class="about-text">
-      Casa Funerară PAX este dedicată să ofere familiilor din Târgu Mureș și împrejurimi
-      servicii funerare complete, profesioniste și cu empatie. Preluăm toate
-      responsabilitățile administrative și logistice, astfel încât familia să se poată
-      concentra pe reculegere și pe amintirile dragi.
+      {{ 'home.about.text' | translate }}
     </p>
-    <a routerLink="/despre-noi" class="cta-btn-ghost">Află mai multe despre noi</a>
+    <a routerLink="/despre-noi" class="cta-btn-ghost">{{ 'home.about.cta' | translate }}</a>
   </div>
 </section>
 
 <section class="testimonials-section" paxRevealOnScroll>
   <div class="container">
-    <h2 class="section-title">Ce spun familiile noastre</h2>
+    <h2 class="section-title">{{ 'testimonials.title' | translate }}</h2>
     <div class="testimonials-grid">
-      <blockquote class="testimonial">
-        <p>"În dimineața aceea nu știam de unde să încep. Ați răspuns la primul apel și ați preluat
-        totul cu atâta grijă. Nu știu cum v-am fi putut mulțumi altfel."</p>
-        <footer>— Familie din Târgu Mureș</footer>
-      </blockquote>
-      <blockquote class="testimonial">
-        <p>"Vă mulțumesc pentru felul discret în care ați fost aproape de noi în cele mai grele
-        momente. Ați tratat totul cu demnitate și cu suflet."</p>
-        <footer>— Familie din Reghin</footer>
-      </blockquote>
-      <blockquote class="testimonial">
-        <p>"Când nu mai știam ce urmează, ne-ați spus pașii pe rând, cu răbdare și fără grabă.
-        Ați fost mai mult decât un serviciu — ați fost un sprijin."</p>
-        <footer>— Familie din Târgu Mureș</footer>
-      </blockquote>
+      @for (t of testimonialKeys; track t) {
+        <blockquote class="testimonial">
+          <p>{{ 'testimonials.' + t + '.text' | translate }}</p>
+          <footer>{{ 'testimonials.' + t + '.author' | translate }}</footer>
+        </blockquote>
+      }
     </div>
   </div>
 </section>
 
 <section class="faq-section">
   <div class="container faq-container" paxRevealOnScroll>
-    <h2 class="section-title">Întrebări Frecvente</h2>
+    <h2 class="section-title">{{ 'home.faqTitle' | translate }}</h2>
     <pax-faq-accordion [items]="faqItems" />
   </div>
 </section>
@@ -77,10 +65,10 @@
 <section class="cta-banner" paxRevealOnScroll>
   <div class="container cta-inner">
     <div>
-      <h2>Suntem alături de dumneavoastră non-stop</h2>
-      <p>Apelați-ne oricând. Preluăm imediat.</p>
+      <h2>{{ 'ctaBanner.title' | translate }}</h2>
+      <p>{{ 'ctaBanner.text' | translate }}</p>
     </div>
-    <a href="tel:0745547530" class="cta-btn-primary">☎ 0745 547 530</a>
+    <a href="tel:0745547530" class="cta-btn-primary">☎ {{ 'common.phone' | translate }}</a>
   </div>
 </section>
 

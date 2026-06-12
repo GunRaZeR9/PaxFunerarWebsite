@@ -30,38 +30,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   readonly teaserServices = SERVICES.slice(0, 6);
   readonly activeService = signal<ServiceCard | null>(null);
 
-  readonly faqItems: FaqItem[] = [
-    {
-      question: 'Ce trebuie să fac imediat după un deces?',
-      answer:
-        'Sunați-ne la 0745 547 530 — răspundem non-stop. Preluăm imediat toate demersurile: constatarea decesului, transportul și actele necesare, pas cu pas, alături de familie.',
-    },
-    {
-      question: 'Ce acte sunt necesare pentru organizarea înmormântării?',
-      answer:
-        'Certificatul medical constatator al decesului și actele de identitate ale defunctului și ale aparținătorului. Ne ocupăm noi de obținerea certificatului de deces și a adeverinței de înhumare.',
-    },
-    {
-      question: 'Sunteți disponibili non-stop?',
-      answer:
-        'Da. Suntem disponibili 24 de ore din 24, 7 zile pe săptămână, inclusiv în weekend și de sărbători legale. La primul apel, preluăm imediat.',
-    },
-    {
-      question: 'Vă ocupați de repatrierea decedaților din străinătate?',
-      answer:
-        'Da, oferim servicii complete de repatriere din orice țară europeană: formalități consulare, documentație și transport internațional.',
-    },
-    {
-      question: 'Cum pot beneficia de ajutorul de înmormântare?',
-      answer:
-        'Vă consiliem și pregătim documentele necesare pentru obținerea ajutorului de deces acordat de Casa de Pensii, indiferent dacă defunctul era pensionar sau asigurat.',
-    },
-    {
-      question: 'Pot personaliza serviciile funerare?',
-      answer:
-        'Desigur. Fiecare ceremonie este organizată după dorințele și tradițiile familiei — religioasă sau civilă, cu personalizare completă a detaliilor.',
-    },
-  ];
+  readonly testimonialKeys = ['t1', 't2', 't3'];
+
+  // Translation keys — resolved by the translate pipe inside pax-faq-accordion
+  readonly faqItems: FaqItem[] = [1, 2, 3, 4, 5, 6].map(n => ({
+    question: `faq.q${n}`,
+    answer: `faq.a${n}`,
+  }));
 
   ngOnInit(): void {
     this.seo.setPage({

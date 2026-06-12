@@ -14,7 +14,7 @@
     (keydown)="onKeydown($event)"
     tabindex="0"
   >
-    <button class="modal-close" type="button" (click)="close()" aria-label="Închide">✕</button>
+    <button class="modal-close" type="button" (click)="close()" [attr.aria-label]="'common.close' | translate">✕</button>
 
     <div class="modal-body">
       <h2 class="modal-title">{{ service()!.name }}</h2>
@@ -38,7 +38,7 @@
         class="cta-btn-primary"
         (click)="close()"
       >
-        {{ service()!.ctaLabel || 'Solicită Serviciul' }}
+        {{ service()!.ctaLabel || ('common.requestService' | translate) }}
       </a>
       <a href="tel:0745547530" class="cta-btn-ghost">☎ 0745 547 530</a>
     </div>

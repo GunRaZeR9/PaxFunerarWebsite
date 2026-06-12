@@ -7,7 +7,7 @@
         (click)="toggle(i)"
         [attr.aria-expanded]="openIndex() === i"
       >
-        <span>{{ item.question }}</span>
+        <span>{{ item.question | translate }}</span>
         <svg
           class="faq-chevron"
           aria-hidden="true"
@@ -25,7 +25,7 @@
       </button>
       <div class="faq-answer-wrap" [attr.aria-hidden]="openIndex() !== i">
         <div class="faq-answer-inner">
-          <p class="faq-answer">{{ item.answer }}</p>
+          <p class="faq-answer">{{ item.answer | translate }}</p>
         </div>
       </div>
     </div>

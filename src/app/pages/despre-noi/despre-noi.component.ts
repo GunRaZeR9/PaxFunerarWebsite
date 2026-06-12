@@ -3,15 +3,18 @@ import { RouterLink } from '@angular/router';
 import { SeoService } from '../../core/services/seo.service';
 import { AnimationService } from '../../core/services/animation.service';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'pax-despre-noi',
   standalone: true,
-  imports: [RouterLink, RevealOnScrollDirective],
+  imports: [RouterLink, RevealOnScrollDirective, TranslateModule],
   templateUrl: './despre-noi.component.html',
   styleUrl: './despre-noi.component.scss',
 })
 export class DespreNoiComponent implements OnInit {
+  readonly testimonialKeys = ['t1', 't2', 't3'];
+
   private readonly seo = inject(SeoService);
   private readonly anim = inject(AnimationService);
 

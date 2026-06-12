@@ -5,11 +5,12 @@ import { ServiceDetailModalComponent } from '../../shared/components/service-det
 import { SeoService } from '../../core/services/seo.service';
 import { AnimationService } from '../../core/services/animation.service';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'pax-servicii-funerare',
   standalone: true,
-  imports: [ServiceCardComponent, ServiceDetailModalComponent, RevealOnScrollDirective],
+  imports: [ServiceCardComponent, ServiceDetailModalComponent, RevealOnScrollDirective, TranslateModule],
   templateUrl: './servicii-funerare.component.html',
   styleUrl: './servicii-funerare.component.scss',
 })

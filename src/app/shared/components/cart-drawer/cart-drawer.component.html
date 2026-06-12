@@ -30,18 +30,18 @@
           <span class="item-image" aria-hidden="true">📦</span>
           <div class="item-info">
             <span class="item-name">{{ item.name }}</span>
-            <span class="item-price">{{ item.price | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+            <span class="item-price">{{ item.price | number:'1.0-0' }} RON</span>
             <div class="item-qty">
               <button
                 type="button"
                 (click)="cart.updateQty(item.productId, item.qty - 1)"
-                aria-label="Scade cantitatea"
+                [attr.aria-label]="'cart.decreaseQty' | translate"
               >−</button>
               <span>{{ item.qty }}</span>
               <button
                 type="button"
                 (click)="cart.updateQty(item.productId, item.qty + 1)"
-                aria-label="Crește cantitatea"
+                [attr.aria-label]="'cart.increaseQty' | translate"
               >+</button>
             </div>
           </div>
@@ -52,7 +52,7 @@
               (click)="cart.removeItem(item.productId)"
               [attr.aria-label]="'cart.remove' | translate"
             >✕</button>
-            <span class="item-total">{{ item.price * item.qty | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+            <span class="item-total">{{ item.price * item.qty | number:'1.0-0' }} RON</span>
           </div>
         </li>
       }
@@ -61,15 +61,15 @@
     <footer class="drawer-footer">
       <div class="totals-row">
         <span>{{ 'cart.subtotal' | translate }}</span>
-        <span>{{ cart.subtotal() | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+        <span>{{ cart.subtotal() | number:'1.0-0' }} RON</span>
       </div>
       <div class="totals-row">
         <span>{{ 'cart.delivery' | translate }}</span>
-        <span>{{ cart.deliveryFee() | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+        <span>{{ cart.deliveryFee() | number:'1.0-0' }} RON</span>
       </div>
       <div class="totals-row totals-total">
         <span>{{ 'cart.total' | translate }}</span>
-        <span>{{ cart.total() | currency:'RON':'symbol':'1.0-0':'ro' }} RON</span>
+        <span>{{ cart.total() | number:'1.0-0' }} RON</span>
       </div>
 
       <button type="button" class="cta-btn-primary checkout-btn" disabled>

@@ -112,11 +112,11 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const CATEGORIES = [
-  { id: 'all', label: 'Toate' },
-  { id: 'lumanari', label: 'Lumânări' },
-  { id: 'coroane', label: 'Coroane Florale' },
-  { id: 'urne', label: 'Urne' },
-  { id: 'fotoceramica', label: 'Fotoceramică' },
-  { id: 'sicrie', label: 'Sicrie' },
-  { id: 'accesorii', label: 'Accesorii' },
+  { id: 'all', labelKey: 'shop.cat.all' },
+  { id: 'lumanari', labelKey: 'shop.cat.lumanari' },
+  { id: 'coroane', labelKey: 'shop.cat.coroane' },
+  { id: 'urne', labelKey: 'shop.cat.urne' },
+  { id: 'fotoceramica', labelKey: 'shop.cat.fotoceramica' },
+  { id: 'sicrie', labelKey: 'shop.cat.sicrie' },
+  { id: 'accesorii', labelKey: 'shop.cat.accesorii' },
 ];

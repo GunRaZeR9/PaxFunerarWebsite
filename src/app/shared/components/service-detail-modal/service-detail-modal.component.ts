@@ -1,13 +1,14 @@
 import { Component, input, output, OnChanges, inject, PLATFORM_ID } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { ServiceCard } from '../../../pages/servicii-funerare/services.data';
 import { AnimationService } from '../../../core/services/animation.service';
 
 @Component({
   selector: 'pax-service-detail-modal',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, TranslateModule],
   templateUrl: './service-detail-modal.component.html',
   styleUrl: './service-detail-modal.component.scss',
 })

@@ -6,11 +6,12 @@ import { SERVICES } from '../services.data';
 import { SeoService } from '../../../core/services/seo.service';
 import { AnimationService } from '../../../core/services/animation.service';
 import { RevealOnScrollDirective } from '../../../shared/directives/reveal-on-scroll.directive';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'pax-service-detail',
   standalone: true,
-  imports: [RouterLink, RevealOnScrollDirective],
+  imports: [RouterLink, RevealOnScrollDirective, TranslateModule],
   templateUrl: './service-detail.component.html',
   styleUrl: './service-detail.component.scss',
 })

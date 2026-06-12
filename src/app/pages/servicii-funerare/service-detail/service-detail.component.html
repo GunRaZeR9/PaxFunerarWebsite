@@ -1,10 +1,10 @@
 @if (service(); as s) {
   <section class="detail-hero">
     <div class="container">
-      <nav class="breadcrumb" aria-label="Navigare">
-        <a routerLink="/">Acasă</a>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">{{ 'nav.home' | translate }}</a>
         <span aria-hidden="true">›</span>
-        <a routerLink="/servicii-funerare">Servicii Funerare</a>
+        <a routerLink="/servicii-funerare">{{ 'nav.services' | translate }}</a>
         <span aria-hidden="true">›</span>
         <span>{{ s.name }}</span>
       </nav>
@@ -19,7 +19,7 @@
         <p class="detail-description">{{ s.description }}</p>
 
         @if (s.benefits.length) {
-          <h2 class="benefits-title">Ce includem</h2>
+          <h2 class="benefits-title">{{ 'serviceDetail.includes' | translate }}</h2>
           <ul class="benefits-list">
             @for (b of s.benefits; track b) {
               <li>
@@ -31,14 +31,14 @@
       </div>
 
       <aside class="detail-cta-box">
-        <h3>Aveți nevoie de ajutor?</h3>
-        <p>Suntem disponibili non-stop. Contactați-ne acum.</p>
+        <h3>{{ 'serviceDetail.helpTitle' | translate }}</h3>
+        <p>{{ 'serviceDetail.helpText' | translate }}</p>
         <a
           routerLink="/contact"
           [queryParams]="{ service: s.slug }"
           class="cta-btn-primary"
         >
-          {{ s.ctaLabel || 'Solicită Serviciul' }}
+          {{ s.ctaLabel || ('common.requestService' | translate) }}
         </a>
         <a href="tel:0745547530" class="cta-btn-ghost">☎ 0745 547 530</a>
         <a href="tel:0745647530" class="cta-btn-ghost">☎ 0745 647 530</a>
@@ -48,12 +48,12 @@
 
   <section class="back-section">
     <div class="container">
-      <a routerLink="/servicii-funerare" class="back-link">← Toate serviciile funerare</a>
+      <a routerLink="/servicii-funerare" class="back-link">{{ 'serviceDetail.backAll' | translate }}</a>
     </div>
   </section>
 } @else {
   <div class="container not-found">
-    <h1>Serviciu negăsit</h1>
-    <a routerLink="/servicii-funerare" class="cta-btn-primary">← Înapoi la servicii</a>
+    <h1>{{ 'serviceDetail.notFound' | translate }}</h1>
+    <a routerLink="/servicii-funerare" class="cta-btn-primary">{{ 'serviceDetail.back' | translate }}</a>
   </div>
 }

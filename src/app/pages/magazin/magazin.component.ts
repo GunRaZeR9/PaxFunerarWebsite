@@ -4,12 +4,13 @@ import { CartService } from '../../core/services/cart.service';
 import { SeoService } from '../../core/services/seo.service';
 import { AnimationService } from '../../core/services/animation.service';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
-import { CurrencyPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'pax-magazin',
   standalone: true,
-  imports: [RevealOnScrollDirective, CurrencyPipe],
+  imports: [RevealOnScrollDirective, DecimalPipe, TranslateModule],
   templateUrl: './magazin.component.html',
   styleUrl: './magazin.component.scss',
 })

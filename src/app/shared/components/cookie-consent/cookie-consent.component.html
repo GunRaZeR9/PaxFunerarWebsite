@@ -1,0 +1,11 @@
+@if (visible()) {
+  <div class="cookie-banner" role="region" [attr.aria-label]="'cookie.title' | translate">
+    <p>
+      {{ 'cookie.text' | translate }}
+      <a routerLink="/politica-de-cookies">{{ 'cookie.more' | translate }}</a>
+    </p>
+    <button type="button" class="cta-btn-primary cookie-accept" (click)="accept()">
+      {{ 'cookie.accept' | translate }}
+    </button>
+  </div>
+}

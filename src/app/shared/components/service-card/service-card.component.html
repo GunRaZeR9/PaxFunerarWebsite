@@ -5,7 +5,7 @@
   (keydown.space)="open()"
   role="button"
   tabindex="0"
-  [attr.aria-label]="'Detalii despre ' + card().name"
+  [attr.aria-label]="('common.details' | translate) + ' ' + card().name"
 >
   <div class="card-icon">
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -15,5 +15,5 @@
   </div>
   <h3 class="card-name">{{ card().name }}</h3>
   <p class="card-teaser">{{ card().teaser }}</p>
-  <span class="card-link" aria-hidden="true">Află mai mult →</span>
+  <span class="card-link" aria-hidden="true">{{ 'common.learnMore' | translate }} →</span>
 </article>

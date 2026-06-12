@@ -1,7 +1,7 @@
 <section class="page-hero">
   <div class="container">
-    <h1 class="page-hero-title reveal-hidden">Contact</h1>
-    <p class="reveal-hidden">Suntem disponibili non-stop. Contactați-ne oricând.</p>
+    <h1 class="page-hero-title reveal-hidden">{{ 'contact.title' | translate }}</h1>
+    <p class="reveal-hidden">{{ 'contact.subtitle' | translate }}</p>
   </div>
 </section>
 
@@ -9,22 +9,22 @@
   <div class="container contact-grid">
 
     <div class="contact-info" paxRevealOnScroll>
-      <h2>Informații Contact</h2>
+      <h2>{{ 'contact.info.title' | translate }}</h2>
 
       <div class="info-item">
         <span class="info-icon" aria-hidden="true">📞</span>
         <div>
-          <strong>Telefon (non-stop)</strong>
+          <strong>{{ 'contact.info.phone' | translate }}</strong>
           <a href="tel:0745547530">0745 547 530</a>
           <a href="tel:0745647530">0745 647 530</a>
-          <a href="tel:0741115864">0741 115 864 (floral)</a>
+          <a href="tel:0741115864">{{ 'contact.info.phoneFloral' | translate }}</a>
         </div>
       </div>
 
       <div class="info-item">
         <span class="info-icon" aria-hidden="true">✉️</span>
         <div>
-          <strong>Email</strong>
+          <strong>{{ 'contact.info.email' | translate }}</strong>
           <a href="mailto:contact@paxfunerar.ro">contact&#64;paxfunerar.ro</a>
         </div>
       </div>
@@ -32,17 +32,17 @@
       <div class="info-item">
         <span class="info-icon" aria-hidden="true">📍</span>
         <div>
-          <strong>Adresă</strong>
-          <span>Strada Alexandru Papiu Ilarian 10</span>
-          <span>Târgu Mureș, Mureș</span>
+          <strong>{{ 'contact.info.address' | translate }}</strong>
+          <span>{{ 'contact.info.addressLine1' | translate }}</span>
+          <span>{{ 'contact.info.addressLine2' | translate }}</span>
         </div>
       </div>
 
       <div class="info-item">
         <span class="info-icon" aria-hidden="true">🕐</span>
         <div>
-          <strong>Program</strong>
-          <span>Non-stop, 24/7, 365 de zile pe an</span>
+          <strong>{{ 'contact.info.schedule' | translate }}</strong>
+          <span>{{ 'contact.info.scheduleValue' | translate }}</span>
         </div>
       </div>
 
@@ -60,12 +60,12 @@
       @if (submitted()) {
         <div class="success-msg">
           <span aria-hidden="true">✓</span>
-          <h3>Mesaj trimis cu succes!</h3>
-          <p>Vă vom contacta în cel mai scurt timp posibil.</p>
+          <h3>{{ 'contact.success.title' | translate }}</h3>
+          <p>{{ 'contact.success.text' | translate }}</p>
         </div>
       } @else {
         <form [formGroup]="form" (ngSubmit)="submit()" class="contact-form" novalidate>
-          <h2>Trimite un mesaj</h2>
+          <h2>{{ 'contact.form.title' | translate }}</h2>
 
           <!-- Honeypot — hidden from users -->
           <div class="hp-field" aria-hidden="true">
@@ -73,50 +73,50 @@
           </div>
 
           <div class="form-group">
-            <label for="name">Nume <span aria-hidden="true">*</span></label>
+            <label for="name">{{ 'contact.form.name' | translate }} <span aria-hidden="true">*</span></label>
             <input
               id="name"
               type="text"
               formControlName="name"
               autocomplete="name"
-              placeholder="Numele dumneavoastră"
+              [placeholder]="'contact.form.namePh' | translate"
               [class.invalid]="form.controls.name.invalid && form.controls.name.touched"
             >
             @if (form.controls.name.invalid && form.controls.name.touched) {
-              <span class="field-error">Introduceți numele (minim 2 caractere)</span>
+              <span class="field-error">{{ 'contact.form.nameError' | translate }}</span>
             }
           </div>
 
           <div class="form-group">
-            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <label for="email">{{ 'contact.form.email' | translate }} <span aria-hidden="true">*</span></label>
             <input
               id="email"
               type="email"
               formControlName="email"
               autocomplete="email"
-              placeholder="email@exemplu.ro"
+              [placeholder]="'contact.form.emailPh' | translate"
               [class.invalid]="form.controls.email.invalid && form.controls.email.touched"
             >
             @if (form.controls.email.invalid && form.controls.email.touched) {
-              <span class="field-error">Introduceți o adresă de email validă</span>
+              <span class="field-error">{{ 'contact.form.emailError' | translate }}</span>
             }
           </div>
 
           <div class="form-group">
-            <label for="phone">Telefon</label>
+            <label for="phone">{{ 'contact.form.phone' | translate }}</label>
             <input
               id="phone"
               type="tel"
               formControlName="phone"
               autocomplete="tel"
-              placeholder="07xx xxx xxx"
+              [placeholder]="'contact.form.phonePh' | translate"
             >
           </div>
 
           <div class="form-group">
-            <label for="service">Serviciu solicitat</label>
+            <label for="service">{{ 'contact.form.service' | translate }}</label>
             <select id="service" formControlName="service">
-              <option value="">— Alegeți un serviciu —</option>
+              <option value="">{{ 'contact.form.servicePh' | translate }}</option>
               @for (opt of serviceOptions; track opt.slug) {
                 <option [value]="opt.slug">{{ opt.name }}</option>
               }
@@ -124,16 +124,16 @@
           </div>
 
           <div class="form-group">
-            <label for="message">Mesaj <span aria-hidden="true">*</span></label>
+            <label for="message">{{ 'contact.form.message' | translate }} <span aria-hidden="true">*</span></label>
             <textarea
               id="message"
               formControlName="message"
               rows="5"
-              placeholder="Descrieți situația sau întrebarea dumneavoastră..."
+              [placeholder]="'contact.form.messagePh' | translate"
               [class.invalid]="form.controls.message.invalid && form.controls.message.touched"
             ></textarea>
             @if (form.controls.message.invalid && form.controls.message.touched) {
-              <span class="field-error">Introduceți un mesaj (minim 10 caractere)</span>
+              <span class="field-error">{{ 'contact.form.messageError' | translate }}</span>
             }
           </div>
 
@@ -142,7 +142,7 @@
             class="cta-btn-primary"
             [disabled]="sending()"
           >
-            {{ sending() ? 'Se trimite...' : 'Trimite Mesajul' }}
+            {{ (sending() ? 'contact.form.sending' : 'contact.form.submit') | translate }}
           </button>
         </form>
       }
