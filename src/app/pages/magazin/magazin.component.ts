@@ -1,4 +1,6 @@
-import { Component, inject, signal, computed, OnInit } from '@angular/core';
+import { Component, inject, signal, computed, OnInit, DestroyRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PRODUCTS, CATEGORIES, Product } from './products.data';
 import { CartService } from '../../core/services/cart.service';
 import { SeoService } from '../../core/services/seo.service';
@@ -18,6 +20,9 @@ export class MagazinComponent implements OnInit {
   private readonly cart = inject(CartService);
   private readonly seo = inject(SeoService);
   private readonly anim = inject(AnimationService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
 
   readonly categories = CATEGORIES;
   readonly activeCategory = signal<string>('all');
@@ -38,10 +43,23 @@ export class MagazinComponent implements OnInit {
     });
     this.anim.fadeUp('.page-hero-title');
     this.anim.fadeUp('.page-hero-desc', 150);
+
+    // Deep links from the navbar dropdown: /magazin?cat=<id>
+    this.route.queryParamMap
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(params => {
+        const cat = params.get('cat');
+        this.activeCategory.set(cat && CATEGORIES.some(c => c.id === cat) ? cat : 'all');
+      });
   }
 
   setCategory(id: string): void {
     this.activeCategory.set(id);
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { cat: id === 'all' ? null : id },
+      replaceUrl: true,
+    });
     setTimeout(() => this.anim.staggerFadeUp('.product-card', 50), 50);
   }
 

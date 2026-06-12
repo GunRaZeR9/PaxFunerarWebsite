@@ -1,11 +1,22 @@
 <section class="hero">
-  <div class="container">
+  <div class="container hero-content">
+    <p class="hero-kicker reveal-hidden">{{ 'common.nonStop' | translate }} · Târgu Mureș</p>
     <h1 class="hero-title reveal-hidden">{{ 'home.hero.title' | translate }}</h1>
     <p class="hero-subtitle reveal-hidden">{{ 'home.hero.subtitle' | translate }}</p>
+    <div class="ornament-divider hero-divider reveal-hidden" aria-hidden="true"><span></span></div>
     <p class="hero-description reveal-hidden">{{ 'home.hero.description' | translate }}</p>
     <div class="hero-actions reveal-hidden">
       <a href="tel:0745547530" class="cta-btn-primary">☎ {{ 'common.phone' | translate }}</a>
+      <a routerLink="/contact" class="cta-btn-ghost">{{ 'nav.cta' | translate }}</a>
     </div>
+    <nav class="hero-quick reveal-hidden" aria-label="Servicii populare">
+      @for (q of heroQuickLinks; track q.slug) {
+        <a [routerLink]="['/servicii-funerare', q.slug]" class="hero-quick-link">
+          <img [src]="q.icon" alt="" width="22" height="22">
+          <span>{{ q.name }}</span>
+        </a>
+      }
+    </nav>
   </div>
 </section>
 
@@ -44,6 +55,7 @@
 <section class="testimonials-section" paxRevealOnScroll>
   <div class="container">
     <h2 class="section-title">{{ 'testimonials.title' | translate }}</h2>
+    <div class="ornament-divider" aria-hidden="true"><span></span></div>
     <div class="testimonials-grid">
       @for (t of testimonialKeys; track t) {
         <blockquote class="testimonial">
@@ -58,6 +70,7 @@
 <section class="faq-section">
   <div class="container faq-container" paxRevealOnScroll>
     <h2 class="section-title">{{ 'home.faqTitle' | translate }}</h2>
+    <div class="ornament-divider" aria-hidden="true"><span></span></div>
     <pax-faq-accordion [items]="faqItems" />
   </div>
 </section>
@@ -68,7 +81,7 @@
       <h2>{{ 'ctaBanner.title' | translate }}</h2>
       <p>{{ 'ctaBanner.text' | translate }}</p>
     </div>
-    <a href="tel:0745547530" class="cta-btn-primary">☎ {{ 'common.phone' | translate }}</a>
+    <a href="tel:0745547530" class="cta-btn-dark">☎ {{ 'common.phone' | translate }}</a>
   </div>
 </section>
 

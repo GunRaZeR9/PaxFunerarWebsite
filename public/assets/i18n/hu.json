@@ -6,7 +6,10 @@
     "about": "Rólunk",
     "contact": "Kapcsolat",
     "cart": "Bevásárlókosár",
-    "menu": "Menü"
+    "menu": "Menü",
+    "allServices": "Összes szolgáltatás",
+    "allProducts": "Összes termék",
+    "cta": "Lépjen kapcsolatba"
   },
   "common": {
     "learnMore": "Tudjon meg többet",
@@ -176,6 +179,7 @@
   "footer": {
     "address": "Alexandru Papiu Ilarian utca 10, Marosvásárhely",
     "email": "contact@paxfunerar.ro",
-    "rights": "Minden jog fenntartva"
+    "rights": "Minden jog fenntartva",
+    "legalTitle": "Hasznos információk"
   }
 }

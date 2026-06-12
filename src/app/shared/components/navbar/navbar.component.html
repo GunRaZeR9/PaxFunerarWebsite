@@ -10,14 +10,113 @@
     </a>
 
     <nav class="navbar-links" [class.open]="menuOpen()" aria-label="Meniu principal">
-      @for (link of links; track link.path) {
-        <a
-          [routerLink]="link.path"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: link.exact }"
-          (click)="closeMenu()"
-        >{{ link.labelKey | translate }}</a>
-      }
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
+        class="nav-link"
+      >{{ 'nav.home' | translate }}</a>
+
+      <!-- Servicii Funerare — dropdown -->
+      <div class="nav-group" [class.expanded]="expandedGroup() === 'services'">
+        <div class="nav-group-trigger">
+          <a
+            routerLink="/servicii-funerare"
+            routerLinkActive="active"
+            (click)="closeMenu()"
+            class="nav-link"
+            aria-haspopup="true"
+          >
+            {{ 'nav.services' | translate }}
+            <svg class="nav-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <button
+            type="button"
+            class="group-toggle"
+            (click)="toggleGroup('services')"
+            [attr.aria-expanded]="expandedGroup() === 'services'"
+            [attr.aria-label]="'nav.services' | translate"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
+        <div class="dropdown dropdown-services">
+          <div class="dropdown-inner">
+            <div class="dropdown-grid">
+              @for (s of services; track s.slug) {
+                <a
+                  [routerLink]="['/servicii-funerare', s.slug]"
+                  (click)="closeMenu()"
+                  class="dropdown-link"
+                >
+                  <img [src]="s.icon" alt="" width="22" height="22" loading="lazy">
+                  <span>{{ s.name }}</span>
+                </a>
+              }
+            </div>
+            <a routerLink="/servicii-funerare" (click)="closeMenu()" class="dropdown-all">
+              {{ 'nav.allServices' | translate }} →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Magazin — dropdown -->
+      <div class="nav-group" [class.expanded]="expandedGroup() === 'shop'">
+        <div class="nav-group-trigger">
+          <a
+            routerLink="/magazin"
+            routerLinkActive="active"
+            (click)="closeMenu()"
+            class="nav-link"
+            aria-haspopup="true"
+          >
+            {{ 'nav.shop' | translate }}
+            <svg class="nav-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <button
+            type="button"
+            class="group-toggle"
+            (click)="toggleGroup('shop')"
+            [attr.aria-expanded]="expandedGroup() === 'shop'"
+            [attr.aria-label]="'nav.shop' | translate"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
+        <div class="dropdown dropdown-shop">
+          <div class="dropdown-inner">
+            @for (c of shopCategories; track c.id) {
+              <a
+                routerLink="/magazin"
+                [queryParams]="{ cat: c.id }"
+                (click)="closeMenu()"
+                class="dropdown-link"
+              >{{ c.labelKey | translate }}</a>
+            }
+            <a routerLink="/magazin" (click)="closeMenu()" class="dropdown-all">
+              {{ 'nav.allProducts' | translate }} →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a
+        routerLink="/despre-noi"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+        class="nav-link"
+      >{{ 'nav.about' | translate }}</a>
+
+      <a
+        routerLink="/contact"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+        class="nav-link"
+      >{{ 'nav.contact' | translate }}</a>
 
       <div class="lang-switch">
         <button
@@ -35,6 +134,10 @@
     </nav>
 
     <div class="navbar-actions">
+      <a routerLink="/contact" class="cta-btn-primary navbar-cta" (click)="closeMenu()">
+        {{ 'nav.cta' | translate }}
+      </a>
+
       <button type="button" class="cart-icon" (click)="openCart()" [attr.aria-label]="'nav.cart' | translate">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>

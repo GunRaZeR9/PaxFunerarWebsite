@@ -1,7 +1,8 @@
 @use '../../../styles/variables' as *;
 
 .page-hero {
-  background: var(--gradient-hero);
+  background: var(--bg-hero-premium);
+  border-bottom: 1px solid var(--color-border);
   padding-block: var(--space-16) var(--space-12);
   text-align: center;
 }

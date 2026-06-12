@@ -30,6 +30,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   readonly teaserServices = SERVICES.slice(0, 6);
   readonly activeService = signal<ServiceCard | null>(null);
 
+  // The three most-requested services, surfaced directly in the hero
+  readonly heroQuickLinks = ['transport-funerar', 'repatriere-decedati', 'incinerare']
+    .map(slug => SERVICES.find(s => s.slug === slug)!)
+    .map(s => ({ slug: s.slug, name: s.name, icon: s.icon }));
+
   readonly testimonialKeys = ['t1', 't2', 't3'];
 
   // Translation keys — resolved by the translate pipe inside pax-faq-accordion
@@ -77,10 +82,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.anim.fadeUp('.hero-title');
-    this.anim.fadeUp('.hero-subtitle', 150);
-    this.anim.fadeUp('.hero-description', 250);
-    this.anim.fadeUp('.hero-actions', 350);
+    this.anim.fadeUp('.hero-kicker');
+    this.anim.fadeUp('.hero-title', 100);
+    this.anim.fadeUp('.hero-subtitle', 220);
+    this.anim.fadeUp('.hero-divider', 320);
+    this.anim.fadeUp('.hero-description', 400);
+    this.anim.fadeUp('.hero-actions', 500);
+    this.anim.fadeUp('.hero-quick', 620);
   }
 
   openModal(service: ServiceCard): void {

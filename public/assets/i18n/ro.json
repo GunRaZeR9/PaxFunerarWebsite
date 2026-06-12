@@ -6,7 +6,10 @@
     "about": "Despre Noi",
     "contact": "Contact",
     "cart": "Coș de Cumpărături",
-    "menu": "Meniu"
+    "menu": "Meniu",
+    "allServices": "Toate serviciile",
+    "allProducts": "Toate produsele",
+    "cta": "Contactați-ne"
   },
   "common": {
     "learnMore": "Află mai mult",
@@ -176,6 +179,7 @@
   "footer": {
     "address": "Strada Alexandru Papiu Ilarian 10, Târgu Mureș",
     "email": "contact@paxfunerar.ro",
-    "rights": "Toate drepturile rezervate"
+    "rights": "Toate drepturile rezervate",
+    "legalTitle": "Informații utile"
   }
 }

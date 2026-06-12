@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { SERVICES } from '../../../pages/servicii-funerare/services.data';
 
 @Component({
   selector: 'pax-footer',
@@ -11,6 +12,11 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class FooterComponent {
   readonly year = new Date().getFullYear();
+
+  readonly serviceLinks = SERVICES.slice(0, 6).map(s => ({
+    path: `/servicii-funerare/${s.slug}`,
+    label: s.name,
+  }));
 
   readonly legalLinks = [
     { path: '/politica-de-confidentialitate', label: 'Politică de Confidențialitate' },

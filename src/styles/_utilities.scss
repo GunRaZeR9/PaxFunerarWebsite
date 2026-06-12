@@ -49,6 +49,79 @@
   }
 }
 
+// Dark CTA for use on gold surfaces
+.cta-btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-3) var(--space-6);
+  background: #141414;
+  color: var(--color-accent-light);
+  font-family: $font-body;
+  font-size: var(--text-base);
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+
+  &:hover, &:focus-visible {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    color: var(--color-accent-light);
+  }
+}
+
+// Ornamental hairline divider with center diamond:
+// <div class="ornament-divider" aria-hidden="true"><span></span></div>
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-block: var(--space-6);
+
+  &::before,
+  &::after {
+    content: '';
+    height: 1px;
+    width: min(140px, 24vw);
+  }
+
+  &::before {
+    background: linear-gradient(90deg, transparent, var(--color-border-accent));
+  }
+
+  &::after {
+    background: linear-gradient(270deg, transparent, var(--color-border-accent));
+  }
+
+  span {
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--color-accent);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+}
+
+// On-gold variant
+.ornament-divider--dark {
+  &::before {
+    background: linear-gradient(90deg, transparent, rgba(20, 20, 20, 0.45));
+  }
+
+  &::after {
+    background: linear-gradient(270deg, transparent, rgba(20, 20, 20, 0.45));
+  }
+
+  span {
+    border-color: rgba(20, 20, 20, 0.65);
+  }
+}
+
 // Ghost / secondary CTA
 .cta-btn-ghost {
   display: inline-flex;

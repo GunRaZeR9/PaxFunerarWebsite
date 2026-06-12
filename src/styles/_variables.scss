@@ -38,6 +38,12 @@ $font-body:    'Inter', -apple-system, sans-serif;
   // Gradients
   --gradient-hero: linear-gradient(160deg, #0f0f0f 0%, #1e1710 100%);
   --gradient-card: linear-gradient(180deg, #1a1a1a 0%, #111111 100%);
+  --gradient-gold: linear-gradient(135deg, #d8b87e 0%, #c9a96e 45%, #a9874e 100%);
+  // Layered page-hero treatment: warm radial glow + vignette over deep charcoal
+  --bg-hero-premium:
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201, 169, 110, 0.14), transparent 70%),
+    radial-gradient(ellipse 90% 70% at 50% 110%, rgba(0, 0, 0, 0.5), transparent 60%),
+    linear-gradient(160deg, #131313 0%, #1e1710 100%);
 
   // Type scale (mobile-first)
   --text-xs:    0.75rem;   // 12px
