@@ -11,6 +11,22 @@
   text-align: center;
   overflow: hidden;
 
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(rgba(15, 15, 15, 0.58), rgba(15, 15, 15, 0.8));
+  }
+
   // thin gold hairline along the very top
   &::before {
     content: '';
@@ -25,6 +41,7 @@
 
 .hero-content {
   position: relative;
+  z-index: 2;
 }
 
 .hero-kicker {

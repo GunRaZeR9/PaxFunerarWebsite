@@ -34,6 +34,11 @@ export class NavbarComponent {
   closeMenu(): void {
     this.menuOpen.set(false);
     this.expandedGroup.set(null);
+    // Desktop hover dropdowns stay open via :focus-within after a click —
+    // drop focus so the panel collapses back to its initial state.
+    if (typeof document !== 'undefined') {
+      (document.activeElement as HTMLElement | null)?.blur();
+    }
   }
 
   toggleGroup(group: NavGroup): void {
