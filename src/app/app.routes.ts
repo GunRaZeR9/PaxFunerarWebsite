@@ -32,6 +32,20 @@ export const routes: Routes = [
       import('./pages/magazin/magazin.component').then(m => m.MagazinComponent),
   },
 
+  // Checkout
+  {
+    path: 'checkout',
+    loadComponent: () =>
+      import('./pages/checkout/checkout.component').then(m => m.CheckoutComponent),
+  },
+
+  // Payment result
+  {
+    path: 'payment/result',
+    loadComponent: () =>
+      import('./pages/payment-result/payment-result.component').then(m => m.PaymentResultComponent),
+  },
+
   // Contact
   {
     path: 'contact',

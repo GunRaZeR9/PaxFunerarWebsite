@@ -23,11 +23,11 @@
 - `animation.service.ts` — anime.js orchestration + motionTokens
 - `seo.service.ts` — title/meta/canonical/JSON-LD per page
 
-## Payment (Phase 4)
-- Revolut Pay ONLY (no Netopia). Read `C:\Users\pault\.claude\skills\revolut-payment-integration\SKILL.md` before touching payment code.
-- Live key — redirect flow via `checkout_url`, never SDK popup. Amounts in bani (×100).
-- Backend goes in `backend/` (clean build from skill, NOT copied from D:\Repos\Payments).
-- Never commit `.env` / secrets.
+## Shop / Payment (WooCommerce)
+- Revolut Pay has been dropped. Payments go through headless WooCommerce — WooCommerce Payments (card) + Cash on Delivery.
+- Read `WOOCOMMERCE_INTEGRATION.md` (project root) before touching shop/payment/order code — it's the authoritative phase plan.
+- WooCommerce + PHP proxy (`proxy.php`) run on Hostico (`www.sellmotion.ro`, temporary testing domain). Write API key lives only in `proxy.php`, never in Angular.
+- No `backend/` Express server for payment — WooCommerce Payments' account lives on WooCommerce.com.
 
 ## Deploy
 - GitHub Pages demo: push to main → `.github/workflows/deploy.yml` → https://gunrazer9.github.io/PaxFunerarWebsite/

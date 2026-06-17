@@ -72,10 +72,9 @@
         <span>{{ cart.total() | number:'1.0-0' }} RON</span>
       </div>
 
-      <button type="button" class="cta-btn-primary checkout-btn" disabled>
+      <a routerLink="/checkout" class="cta-btn-primary checkout-btn" (click)="cart.closeDrawer()">
         {{ 'cart.checkout' | translate }}
-      </button>
-      <p class="checkout-note">{{ 'cart.checkoutSoon' | translate }}</p>
+      </a>
 
       <button type="button" class="clear-btn" (click)="cart.clear()">
         {{ 'cart.clear' | translate }}

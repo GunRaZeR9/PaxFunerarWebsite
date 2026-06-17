@@ -402,6 +402,9 @@
     "title": "Virágüzlet",
     "desc": "Temetési virágkompozíciók — koszorúk, gyászcsokrok, csokrok és élővirág-kompozíciók, kiszállítással Marosvásárhelyen.",
     "floralNote": "Telefonos virágrendelés: 0741 115 864 — non-stop",
+    "loading": "Termékek betöltése...",
+    "loadError": "A termékek nem tölthetők be. Kérjük, próbálja újra.",
+    "retry": "Újra próbálom",
     "cat": {
       "all": "Összes",
       "coroane": "Virágkoszorúk",
@@ -461,6 +464,26 @@
         "description": "Visszafogott megemlékező csokor fehér élővirágból — rózsa, krizantém és zöld díszítés. Sírra helyezésre vagy megemlékező szertartásokra alkalmas."
       }
     }
+  },
+  "checkout": {
+    "title": "Rendelés véglegesítése",
+    "firstName": "Keresztnév",
+    "lastName": "Vezetéknév",
+    "email": "Email",
+    "phone": "Telefon",
+    "address": "Cím (opcionális)",
+    "city": "Város (opcionális)",
+    "postcode": "Irányítószám (opcionális)",
+    "paymentMethod": "Fizetési mód",
+    "cod": "Utánvét (szállításkor fizet)",
+    "card": "Online bankkártyás fizetés",
+    "orderSummary": "Rendelés összegzése",
+    "placeOrder": "Rendelés leadása",
+    "orderError": "Hiba történt. Kérjük, próbálja újra vagy lépjen kapcsolatba velünk.",
+    "successTitle": "A rendelés sikeresen leadva!",
+    "successText": "Rövidesen visszaigazoló e-mailt kap.",
+    "failTitle": "A fizetés nem sikerült",
+    "failText": "A rendelés nem fejeződött be. Kérjük, próbálja újra."
   },
   "contact": {
     "title": "Kapcsolat",

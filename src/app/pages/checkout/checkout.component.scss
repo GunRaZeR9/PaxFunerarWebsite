@@ -1,0 +1,210 @@
+@use '../../../styles/variables' as *;
+
+.checkout-section {
+  padding-block: var(--space-12) var(--space-24);
+  min-height: 70vh;
+}
+
+.checkout-grid {
+  display: grid;
+  gap: var(--space-8);
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: 1fr 380px;
+    align-items: start;
+  }
+}
+
+.checkout-title {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-8);
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.form-row {
+  display: grid;
+  gap: var(--space-4);
+
+  @media (min-width: $bp-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+
+  label {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+
+  input {
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text-primary);
+    font-size: var(--text-base);
+    transition: border-color 150ms;
+    min-height: 44px;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+
+    &.invalid {
+      border-color: var(--color-error, #c0392b);
+    }
+  }
+}
+
+.payment-method-group {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+
+  legend {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    padding-inline: var(--space-2);
+  }
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  font-size: var(--text-base);
+
+  input[type='radio'] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+}
+
+.form-error {
+  color: var(--color-error, #c0392b);
+  font-size: var(--text-sm);
+  background: rgba(192, 57, 43, 0.08);
+  border: 1px solid rgba(192, 57, 43, 0.3);
+  border-radius: 8px;
+  padding: var(--space-3) var(--space-4);
+  margin: 0;
+}
+
+.submit-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(15, 15, 15, 0.3);
+  border-top-color: #0f0f0f;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.full-w { width: 100%; }
+
+.back-link {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  align-self: flex-start;
+
+  &:hover { color: var(--color-accent); }
+}
+
+// Order summary sidebar
+.order-summary {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-6);
+
+  h2 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+  }
+}
+
+.summary-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.summary-name { flex: 1; }
+
+.summary-price {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.summary-totals {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+
+  &.totals-total {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-2);
+  }
+}

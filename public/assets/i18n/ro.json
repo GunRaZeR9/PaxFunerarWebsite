@@ -402,6 +402,9 @@
     "title": "Magazin Floral",
     "desc": "Aranjamente florale funerare — coroane, jerbe, buchete și aranjamente din flori naturale, cu livrare în Târgu Mureș.",
     "floralNote": "Comenzi florale telefonice: 0741 115 864 — non-stop",
+    "loading": "Se încarcă produsele...",
+    "loadError": "Nu s-au putut încărca produsele. Vă rugăm reîncercați.",
+    "retry": "Reîncercați",
     "cat": {
       "all": "Toate",
       "coroane": "Coroane Florale",
@@ -461,6 +464,26 @@
         "description": "Buchet comemorativ sobru din flori naturale albe — trandafiri, crizanteme și verdeață. Potrivit pentru depunere la mormânt sau ceremonii de comemorare."
       }
     }
+  },
+  "checkout": {
+    "title": "Finalizează Comanda",
+    "firstName": "Prenume",
+    "lastName": "Nume",
+    "email": "Email",
+    "phone": "Telefon",
+    "address": "Adresă (opțional)",
+    "city": "Oraș (opțional)",
+    "postcode": "Cod Poștal (opțional)",
+    "paymentMethod": "Metoda de plată",
+    "cod": "Plată ramburs (la livrare)",
+    "card": "Card online",
+    "orderSummary": "Sumar Comandă",
+    "placeOrder": "Plasează comanda",
+    "orderError": "A apărut o eroare. Vă rugăm reîncercați sau contactați-ne.",
+    "successTitle": "Comandă plasată cu succes!",
+    "successText": "Veți primi un email de confirmare în scurt timp.",
+    "failTitle": "Plata nu a fost procesată",
+    "failText": "Comanda nu a fost finalizată. Vă rugăm încercați din nou."
   },
   "contact": {
     "title": "Contact",

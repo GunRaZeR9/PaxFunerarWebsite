@@ -1,12 +1,13 @@
 import { Component, HostListener, inject } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'pax-cart-drawer',
   standalone: true,
-  imports: [DecimalPipe, TranslateModule],
+  imports: [DecimalPipe, RouterLink, TranslateModule],
   templateUrl: './cart-drawer.component.html',
   styleUrl: './cart-drawer.component.scss',
 })

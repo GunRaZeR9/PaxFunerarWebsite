@@ -1,0 +1,107 @@
+<section class="checkout-section">
+  <div class="container checkout-grid">
+
+    <div class="checkout-form-col">
+      <h1 class="checkout-title">{{ 'checkout.title' | translate }}</h1>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="checkout-form" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first_name">{{ 'checkout.firstName' | translate }}</label>
+            <input id="first_name" type="text" formControlName="first_name"
+              [class.invalid]="form.controls.first_name.invalid && form.controls.first_name.touched">
+          </div>
+          <div class="form-group">
+            <label for="last_name">{{ 'checkout.lastName' | translate }}</label>
+            <input id="last_name" type="text" formControlName="last_name"
+              [class.invalid]="form.controls.last_name.invalid && form.controls.last_name.touched">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">{{ 'checkout.email' | translate }}</label>
+          <input id="email" type="email" formControlName="email"
+            [class.invalid]="form.controls.email.invalid && form.controls.email.touched">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">{{ 'checkout.phone' | translate }}</label>
+          <input id="phone" type="tel" formControlName="phone"
+            [class.invalid]="form.controls.phone.invalid && form.controls.phone.touched">
+        </div>
+
+        <div class="form-group">
+          <label for="address_1">{{ 'checkout.address' | translate }}</label>
+          <input id="address_1" type="text" formControlName="address_1">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">{{ 'checkout.city' | translate }}</label>
+            <input id="city" type="text" formControlName="city">
+          </div>
+          <div class="form-group">
+            <label for="postcode">{{ 'checkout.postcode' | translate }}</label>
+            <input id="postcode" type="text" formControlName="postcode">
+          </div>
+        </div>
+
+        <fieldset class="payment-method-group">
+          <legend>{{ 'checkout.paymentMethod' | translate }}</legend>
+          <label class="payment-option">
+            <input type="radio" formControlName="payment_method" value="cod">
+            <span>{{ 'checkout.cod' | translate }}</span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" formControlName="payment_method" value="card">
+            <span>{{ 'checkout.card' | translate }}</span>
+          </label>
+        </fieldset>
+
+        @if (error()) {
+          <p class="form-error">{{ error()! | translate }}</p>
+        }
+
+        <button type="submit" class="cta-btn-primary full-w submit-btn"
+          [disabled]="form.invalid || submitting()">
+          @if (submitting()) {
+            <span class="btn-spinner" aria-hidden="true"></span>
+          }
+          {{ 'checkout.placeOrder' | translate }} — {{ total() | number:'1.0-0' }} RON
+        </button>
+
+        <a routerLink="/magazin" class="back-link">← {{ 'nav.shop' | translate }}</a>
+      </form>
+    </div>
+
+    <aside class="order-summary">
+      <h2>{{ 'checkout.orderSummary' | translate }}</h2>
+
+      <ul class="summary-items">
+        @for (item of cartItems(); track item.productId) {
+          <li class="summary-item">
+            <span class="summary-name">{{ item.name }} × {{ item.qty }}</span>
+            <span class="summary-price">{{ item.price * item.qty | number:'1.0-0' }} RON</span>
+          </li>
+        }
+      </ul>
+
+      <div class="summary-totals">
+        <div class="totals-row">
+          <span>{{ 'cart.subtotal' | translate }}</span>
+          <span>{{ subtotal() | number:'1.0-0' }} RON</span>
+        </div>
+        <div class="totals-row">
+          <span>{{ 'cart.delivery' | translate }}</span>
+          <span>{{ deliveryFee() | number:'1.0-0' }} RON</span>
+        </div>
+        <div class="totals-row totals-total">
+          <span>{{ 'cart.total' | translate }}</span>
+          <span>{{ total() | number:'1.0-0' }} RON</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>

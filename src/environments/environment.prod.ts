@@ -1,5 +1,7 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://YOUR-BACKEND-HOST.com/api', // TODO: set once backend host (Railway/Render/VPS) is chosen
-  revolutPublicKey: 'pk_wQ3IpjCVH9s4vGc6LoQqnIMMG9ZAHO5pZw1LuwS8ca7tAx54',
+  wcApiUrl: 'https://wp.sellmotion.ro/wp-json/wc/v3',
+  wcConsumerKey: 'ck_97fd714680b8f56be513c20bb2ef6b835379f203',
+  wcConsumerSecret: 'cs_dc72256cdf2a02151ae09842de5f4b8e341a42c4',
+  proxyUrl: 'https://wp.sellmotion.ro/proxy.php',
 };

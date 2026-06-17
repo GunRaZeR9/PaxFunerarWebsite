@@ -1,13 +1,15 @@
 import { Component, inject, signal, computed, OnInit, DestroyRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PRODUCTS, CATEGORIES, Product } from './products.data';
+import { CATEGORIES } from './products.data';
+import { WooCommerceService } from '../../core/services/woocommerce.service';
+import { WcProduct } from '../../core/models/woocommerce.models';
 import { CartService } from '../../core/services/cart.service';
 import { SeoService } from '../../core/services/seo.service';
 import { AnimationService } from '../../core/services/animation.service';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 import { DecimalPipe } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'pax-magazin',
@@ -17,40 +19,71 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrl: './magazin.component.scss',
 })
 export class MagazinComponent implements OnInit {
-  private readonly cart = inject(CartService);
-  private readonly seo = inject(SeoService);
-  private readonly anim = inject(AnimationService);
-  private readonly route = inject(ActivatedRoute);
-  private readonly router = inject(Router);
+  private readonly wc        = inject(WooCommerceService);
+  private readonly cart      = inject(CartService);
+  private readonly seo       = inject(SeoService);
+  private readonly anim      = inject(AnimationService);
+  private readonly route     = inject(ActivatedRoute);
+  private readonly router    = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly translate = inject(TranslateService);
 
-  readonly categories = CATEGORIES;
+  readonly categories     = CATEGORIES;
   readonly activeCategory = signal<string>('all');
-  readonly activeProduct = signal<Product | null>(null);
-  readonly productQty = signal<number>(1);
+  readonly activeProduct  = signal<WcProduct | null>(null);
+  readonly productQty     = signal<number>(1);
+
+  readonly allProducts = signal<WcProduct[]>([]);
+  readonly loading     = signal<boolean>(true);
+  readonly error       = signal<string | null>(null);
 
   readonly filteredProducts = computed(() => {
     const cat = this.activeCategory();
-    return cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === cat);
+    if (cat === 'all') return this.allProducts();
+    const catEntry = CATEGORIES.find(c => c.id === cat);
+    if (!catEntry?.slug) return this.allProducts();
+    return this.allProducts().filter(p =>
+      p.categories.some(c => c.slug === catEntry.slug)
+    );
   });
 
   ngOnInit(): void {
     this.seo.setPage({
       title: 'Magazin Floral | Casa Funerară PAX Târgu Mureș',
-      description:
-        'Aranjamente florale funerare PAX: coroane, jerbe, buchete și aranjamente din flori naturale. Comandă online sau telefonic la 0741 115 864, livrare în Târgu Mureș.',
-      canonical: 'https://paxfunerar.ro/magazin',
+      description: 'Aranjamente florale funerare PAX: coroane, jerbe, buchete. Comandă online sau telefonic la 0741 115 864.',
+      canonical: 'https://sellmotion.ro/magazin',
     });
+
     this.anim.fadeUp('.page-hero-title');
     this.anim.fadeUp('.page-hero-desc', 150);
 
-    // Deep links from the navbar dropdown: /magazin?cat=<id>
+    this.loadProducts();
+
     this.route.queryParamMap
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(params => {
         const cat = params.get('cat');
-        this.activeCategory.set(cat && CATEGORIES.some(c => c.id === cat) ? cat : 'all');
+        this.activeCategory.set(
+          cat && CATEGORIES.some(c => c.id === cat) ? cat : 'all'
+        );
+      });
+  }
+
+  loadProducts(): void {
+    this.loading.set(true);
+    this.error.set(null);
+
+    this.wc.getProducts({ per_page: 100 })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: products => {
+          this.allProducts.set(products);
+          this.loading.set(false);
+          setTimeout(() => this.anim.staggerFadeUp('.product-card', 50), 50);
+        },
+        error: () => {
+          this.error.set('shop.loadError');
+          this.loading.set(false);
+        },
       });
   }
 
@@ -64,7 +97,7 @@ export class MagazinComponent implements OnInit {
     setTimeout(() => this.anim.staggerFadeUp('.product-card', 50), 50);
   }
 
-  openProduct(product: Product): void {
+  openProduct(product: WcProduct): void {
     this.productQty.set(1);
     this.activeProduct.set(product);
   }
@@ -73,34 +106,41 @@ export class MagazinComponent implements OnInit {
     this.activeProduct.set(null);
   }
 
-  increment(): void {
-    this.productQty.update(q => q + 1);
+  increment(): void { this.productQty.update(q => q + 1); }
+  decrement(): void { this.productQty.update(q => Math.max(1, q - 1)); }
+
+  getPrice(product: WcProduct): number {
+    return this.wc.parsePrice(product);
   }
 
-  decrement(): void {
-    this.productQty.update(q => Math.max(1, q - 1));
+  getImage(product: WcProduct): string {
+    return product.images[0]?.src ?? 'assets/images/placeholder.jpg';
   }
 
-  addToCart(product: Product): void {
+  addToCart(product: WcProduct): void {
     this.cart.addItem({
-      productId: product.id,
-      name: this.translate.instant(product.name),
-      price: product.price,
-      qty: this.productQty(),
-      image: product.image,
+      productId:   String(product.id),
+      wcProductId: product.id,
+      name:        product.name,
+      price:       this.wc.parsePrice(product),
+      qty:         this.productQty(),
+      image:       this.getImage(product),
     });
     this.closeProduct();
+    this.cart.openDrawer();
   }
 
-  addToCartDirect(product: Product, event: MouseEvent): void {
+  addToCartDirect(product: WcProduct, event: MouseEvent): void {
     event.stopPropagation();
     this.cart.addItem({
-      productId: product.id,
-      name: this.translate.instant(product.name),
-      price: product.price,
-      qty: 1,
-      image: product.image,
+      productId:   String(product.id),
+      wcProductId: product.id,
+      name:        product.name,
+      price:       this.wc.parsePrice(product),
+      qty:         1,
+      image:       this.getImage(product),
     });
+    this.cart.openDrawer();
   }
 
   onOverlayClick(e: MouseEvent): void {

@@ -1,0 +1,41 @@
+READ
+
+Consumer key
+ck_deb2fa465add635029d774b34b60c832f29ced79
+
+Consumer secret
+cs_906703ea56d22b66b509e9f6b9e9a1806aa15953
+
+READ/WRITE
+
+
+Consumer key
+ck_6b05b5048a7f857c78b7b28b5ba77c9b18adb10e
+ 
+Consumer secret
+cs_2c5919f44d0f29309019ffecf44227567b4999cb
+
+
+Admin Account
+
+Admin Username
+sellmotion
+
+Admin Password
+Nuamparola2026!
+
+Admin Email
+sellmotion@gmail.com
+
+
+
+Database Name: sellmotion_wp841
+
+Table Prefix: wpnfyg_
+
+
+
+
+okey , so what's the problem, what can we do to make it work without this file? The website loads, but I want to make it so it does not need to do it for every project, can you create 2 separate instruction files 1 for code modifications, and 1 for cpanel instructions on what to configure and what to do there. You can create a skill and inside that skill put the code modifications for this kind of implementation or better you can look into the /angular-presentation-blueprints as ecomerce blueprint that puts on top of the premium blueprint the woocomerce integration trough the hostico cpanel.
+
+

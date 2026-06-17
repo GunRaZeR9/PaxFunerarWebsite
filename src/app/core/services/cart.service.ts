@@ -1,11 +1,12 @@
 import { Injectable, signal, computed } from '@angular/core';
 
 export interface CartItem {
-  productId: string;
-  name: string;
-  price: number;
-  qty: number;
-  image: string;
+  productId:   string;
+  wcProductId: number;
+  name:        string;
+  price:       number;
+  qty:         number;
+  image:       string;
 }
 
 @Injectable({ providedIn: 'root' })
