@@ -83,6 +83,75 @@ function pax_shop_categories(): array {
     ];
 }
 
+/**
+ * Long-form detail-page content — port of ServiceDetailComponent PAGE_SPECS +
+ * the page() computed. Returns i18n key maps under servicePage.<slug>.*, or
+ * null for slugs without a long-form spec.
+ */
+function pax_service_page_content(string $slug): ?array {
+    $specs = [
+        'intocmirea-actelor'    => ['items' => 5, 'conclusion' => true],
+        'transport-funerar'     => ['items' => 3, 'benefits' => 3, 'conclusion' => true],
+        'imbalsamare'           => ['items' => 3, 'benefits' => 3, 'conclusion' => true],
+        'servicii-ceremoniale'  => ['items' => 3, 'benefits' => 3, 'conclusion' => true],
+        'servicii-de-catering'  => ['items' => 3, 'benefits' => 3, 'conclusion' => true],
+        'repatriere-decedati'   => ['items' => 3, 'benefits' => 3, 'conclusion' => true],
+        'capela'                => ['items' => 6, 'conclusion' => true],
+        'pregatire-loc-de-veci' => ['items' => 3, 'conclusion' => true],
+        'incinerare'            => ['items' => 5, 'reasons' => 5, 'extras' => 3, 'conclusion' => true],
+        'fotoceramica'          => ['items' => 4, 'shapes' => 9, 'conclusion' => false],
+    ];
+    if (!isset($specs[$slug])) {
+        return null;
+    }
+    $spec  = $specs[$slug];
+    $base  = "servicePage.{$slug}";
+    $range = fn(int $n): array => $n > 0 ? range(1, $n) : [];
+
+    $items = [];
+    foreach ($range($spec['items'] ?? 0) as $i) {
+        $items[] = ['title' => "{$base}.item{$i}Title", 'text' => "{$base}.item{$i}Text"];
+    }
+    $why = [];
+    foreach ($range($spec['benefits'] ?? 0) as $i) {
+        $why[] = "{$base}.benefit{$i}";
+    }
+    foreach ($range($spec['reasons'] ?? 0) as $i) {
+        $why[] = "{$base}.reason{$i}";
+    }
+    $extras = [];
+    foreach ($range($spec['extras'] ?? 0) as $i) {
+        $extras[] = ['title' => "{$base}.extra{$i}Title", 'text' => "{$base}.extra{$i}Text"];
+    }
+    $shapes = [];
+    foreach ($range($spec['shapes'] ?? 0) as $i) {
+        $shapes[] = "{$base}.shape{$i}";
+    }
+    $hasShapes = !empty($spec['shapes']);
+
+    return [
+        'heroIntro'   => "{$base}.heroIntro",
+        'bodyIntro'   => "{$base}.bodyIntro",
+        'items'       => $items,
+        'why'         => $why,
+        'extras'      => $extras,
+        'shapesTitle' => $hasShapes ? "{$base}.shapesTitle" : null,
+        'shapes'      => $shapes,
+        'orderCta'    => $hasShapes ? "{$base}.orderCta" : null,
+        'contactCta'  => $hasShapes ? "{$base}.contactCta" : null,
+        'conclusion'  => !empty($spec['conclusion']) ? "{$base}.conclusion" : null,
+    ];
+}
+
+/** Contact-form service dropdown options — port of SERVICE_MAP. */
+function pax_service_options(): array {
+    $opts = [];
+    foreach (pax_services() as $s) {
+        $opts[] = ['slug' => $s['slug'], 'name' => $s['name']];
+    }
+    return $opts;
+}
+
 /** Legal pages — port of FooterComponent.legalLinks. */
 function pax_legal_links(): array {
     return [

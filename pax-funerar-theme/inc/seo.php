@@ -23,21 +23,21 @@ function pax_seo_jsonld(array $schema): void {
     $pax_seo_jsonld = $schema;
 }
 
-/** The LocalBusiness / FuneralHome schema, values from PROJECT_PLAN.md. */
+/** The FuneralHome schema — values ported verbatim from HomeComponent ngOnInit. */
 function pax_funeral_home_schema(): array {
     return [
-        '@context' => 'https://schema.org',
-        '@type'    => 'FuneralHome',
-        'name'     => 'Casa Funerară PAX',
-        'image'    => home_url('/wp-content/themes/pax-funerar-theme/assets/photos/home/home_hero.png'),
-        'url'      => home_url('/'),
-        'telephone' => '+40745547530',
-        'priceRange' => '$$',
-        'address'  => [
+        '@context'  => 'https://schema.org',
+        '@type'     => 'FuneralHome',
+        'name'      => 'Casa Funerară PAX',
+        'url'       => home_url('/'),
+        'telephone' => ['+40745547530', '+40745647530'],
+        'email'     => 'contact@paxfunerar.ro',
+        'address'   => [
             '@type'           => 'PostalAddress',
-            'streetAddress'   => 'Str. Gheorghe Doja',
+            'streetAddress'   => 'Strada Alexandru Papiu Ilarian 10',
             'addressLocality' => 'Târgu Mureș',
             'addressRegion'   => 'Mureș',
+            'postalCode'      => '540058',
             'addressCountry'  => 'RO',
         ],
         'openingHoursSpecification' => [

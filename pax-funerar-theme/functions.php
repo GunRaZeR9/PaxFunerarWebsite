@@ -22,6 +22,7 @@ require_once PAX_DIR . '/inc/i18n.php';
 require_once PAX_DIR . '/inc/seo.php';
 require_once PAX_DIR . '/inc/services-data.php';
 require_once PAX_DIR . '/inc/content-data.php';
+require_once PAX_DIR . '/inc/legal-data.php';
 require_once PAX_DIR . '/inc/service-meta.php';
 require_once PAX_DIR . '/inc/contact-form.php';
 
@@ -161,5 +162,9 @@ function pax_cart_count(): int {
  * ---------------------------------------------------------------------- */
 add_filter('body_class', function ($classes) {
     $classes[] = 'lang-' . pax_current_lang();
+    // Page-scope class set by templates BEFORE get_header() (drives .page-* CSS).
+    if (!empty($GLOBALS['pax_body_class'])) {
+        $classes[] = $GLOBALS['pax_body_class'];
+    }
     return $classes;
 });

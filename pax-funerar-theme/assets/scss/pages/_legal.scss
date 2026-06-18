@@ -1,0 +1,78 @@
+@use 'variables' as *;
+
+// Ported from LegalComponent's inline styles[]. Bare element selectors are
+// confined to .legal-content / .page-hero so they don't leak to the shared
+// header/footer via the .page-legal body class.
+.page-legal {
+  .page-hero {
+    background: var(--gradient-hero);
+    padding-block: var(--space-12);
+  }
+
+  .page-hero h1 {
+    font-size: var(--text-3xl);
+  }
+
+  .legal-subtitle {
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+  }
+
+  .legal-updated {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-2);
+  }
+
+  .legal-body {
+    padding-block: var(--space-12);
+  }
+
+  .legal-content {
+    max-width: 800px;
+    line-height: 1.8;
+  }
+
+  .legal-content h2 {
+    font-size: var(--text-xl);
+    margin-block: var(--space-8) var(--space-4);
+  }
+
+  .legal-content h3 {
+    font-size: var(--text-lg);
+    margin-block: var(--space-6) var(--space-3);
+  }
+
+  .legal-content p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+
+  .legal-content ul {
+    color: var(--color-text-secondary);
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-4);
+  }
+
+  .legal-content li {
+    margin-bottom: var(--space-2);
+  }
+
+  .legal-intro,
+  .legal-closing {
+    color: var(--color-text-secondary);
+  }
+
+  .back-section {
+    padding-bottom: var(--space-12);
+  }
+
+  .back-link {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+}
