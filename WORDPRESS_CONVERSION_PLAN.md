@@ -1,10 +1,38 @@
 # 🧱 PaxFunerar — Angular → Plain PHP/WordPress Theme Conversion Plan
-> **Version:** 1.0 | **Date:** 2026-06-18 | **Status:** Ready for Claude Code
+> **Version:** 1.1 | **Date:** 2026-06-18 | **Status:** Phases 0–5 BUILT · Phase 6 (host QA + cutover) pending
 >
 > Companion to `PROJECT_PLAN.md` (design system + content source of truth) and
 > `WOOCOMMERCE_INTEGRATION.md` (now superseded for the frontend parts — WooCommerce
 > stays, the REST/proxy layer goes). Read this file at the start of any session that
 > touches theme code.
+
+---
+
+## ✅ Build Status (2026-06-18)
+
+The theme is built at `pax-funerar-theme/` on branch **`wordpress-theme`**.
+Phases 0–5 are complete and committed; **Phase 6 (visual QA + Lighthouse +
+domain cutover) is the only remaining work and must run on the live WordPress
+host** — there's no PHP/WordPress runtime in the dev sandbox, so nothing has been
+render-tested. Templates were authored against the real Angular sources and
+validated by i18n-key checks (all RO+HU keys resolve) and JS syntax checks.
+
+**Decisions locked during the build:**
+- **Service detail = Option B** — page editor (`the_content`) + a no-plugin meta
+  box (teaser / benefits / icon) override **bilingual i18n fallbacks**; the
+  long-form `servicePage.*` sections stay i18n-driven.
+- **Page CSS is scoped under `.page-*` body classes** (not a flat global sheet) —
+  several pages reuse `.section-title` / `.page-hero` / `.cta-inner` with
+  different values, so a flat sheet would collide. This reproduces Angular's view
+  encapsulation; shared components stay global. Cart-drawer SCSS was dropped
+  (native WooCommerce cart replaces it).
+
+**Operator docs / automation:**
+- `pax-funerar-theme/README.md` — install + the full wp-admin cutover checklist.
+- `pax-funerar-theme/bin/setup-wp.sh` — **WP-CLI script** that creates all 17
+  Pages with correct slugs/parents/templates, renames the Shop slug to `magazin`,
+  and flushes permalinks (idempotent). Run it on the host instead of clicking
+  through wp-admin.
 
 ---
 
@@ -364,51 +392,60 @@ all** — there's nothing left for it to break.
 
 ## 🚀 Implementation Phases (for Claude Code)
 
-### Phase 0 — Theme scaffold
+### Phase 0 — Theme scaffold ✅
 ```
-[ ] functions.php: theme_support (woocommerce, title-tag, post-thumbnails), enqueues
-[ ] header.php / footer.php skeleton (nav, phone-sticky, footer markup)
-[ ] Confirm theme activates with no PHP errors on a blank WordPress install
-```
-
-### Phase 1 — SCSS → CSS + static sanity check
-```
-[ ] Copy SCSS partials in, compile to assets/css/style.css
-[ ] Build front-page.php with hardcoded placeholder content just to confirm the
-    compiled CSS renders pixel-identical to the live Angular site
+[x] functions.php: theme_support (woocommerce, title-tag, post-thumbnails), enqueues
+[x] header.php / footer.php skeleton (nav, phone-sticky, cookie banner, footer markup)
+[~] Confirm theme activates with no PHP errors — verify on the host (no local PHP)
 ```
 
-### Phase 2 — Content data + helpers
+### Phase 1 — SCSS → CSS + static sanity check ✅
 ```
-[ ] inc/services-data.php, inc/content-data.php ported from the real source files
-[ ] inc/i18n.php + pax_t(), copy ro.json/hu.json into assets/i18n/
-[ ] inc/seo.php + pax_seo()
-```
-
-### Phase 3 — Core page templates
-```
-[ ] front-page.php (real content via pax_t() + content-data.php)
-[ ] page-servicii-funerare.php (card grid, modals)
-[ ] 10 child pages + page-service-detail.php (Option A or B — confirm which)
-[ ] page-despre-noi.php, page.php (legal pages)
-[ ] page-contact.php + inc/contact-form.php
+[x] Copy SCSS partials in, compile to assets/css/style.css (npm run build:css; 53 KB)
+[x] All component + page SCSS aggregated; page styles scoped under .page-* classes
+[~] Pixel-diff vs live Angular site — deferred to Phase 6 (needs host render)
 ```
 
-### Phase 4 — Interactivity/animation
+### Phase 2 — Content data + helpers ✅
 ```
-[ ] animations.js, reveal.js, modals.js, nav.js, lang-switch.js
-[ ] Wire data-reveal attributes + modal triggers into the templates above
-```
-
-### Phase 5 — WooCommerce template overrides
-```
-[ ] Copy + restyle archive-product.php, content-product.php, single-product.php
-[ ] Rename Shop page slug to magazin
-[ ] Wire added_to_cart event → cart badge pulse animation
+[x] inc/services-data.php (+ PAGE_SPECS port), inc/content-data.php, inc/legal-data.php
+[x] inc/i18n.php + pax_t()/pax_t_array(), copied ro.json/hu.json into assets/i18n/
+[x] inc/seo.php + pax_seo() + FuneralHome JSON-LD + <title> filter
 ```
 
-### Phase 6 — QA + cutover
+### Phase 3 — Core page templates ✅
 ```
+[x] front-page.php (real content via pax_t() + content-data.php)
+[x] page-servicii-funerare.php (card grid + per-card hidden modals)
+[x] page-service-detail.php (Template: Service Detail) — Option B + meta box
+[x] page-despre-noi.php, page-legal.php (5 legal pages), page.php fallback
+[x] page-contact.php + inc/contact-form.php (validate / honeypot / wp_mail / ?sent=1)
+[x] template-parts/: service-card.php, service-modal.php, faq-accordion.php
+```
+
+### Phase 4 — Interactivity/animation ✅
+```
+[x] animations.js (+ per-page hero intro), reveal.js, modals.js, nav.js, cart.js
+    (lang-switch.js NOT needed — language switch is server-side anchor links)
+[x] Wired data-reveal + modal triggers (data-modal-open/data-modal) into templates
+[x] All anime.js durations/easings ported verbatim; prefers-reduced-motion honoured
+```
+
+### Phase 5 — WooCommerce template overrides ✅
+```
+[x] archive-product.php (IS /magazin), content-product.php (card + quick-view
+    modal), single-product.php (WC content in theme shell, on-brand styled)
+[x] inc/woocommerce.php: ?cat= filter, page-magazin body class, price helper
+[x] Cart badge as woocommerce_add_to_cart_fragments → count auto-updates
+[x] Wired added_to_cart → cart badge pulse (cart.js) + quick-view qty stepper
+[~] Rename Shop page slug to magazin — done by bin/setup-wp.sh at cutover
+```
+
+### Phase 6 — QA + cutover ⏳ (remaining — host only)
+```
+[ ] Install theme on host, activate, confirm no PHP errors (covers Phase 0's [~])
+[ ] Run `bash pax-funerar-theme/bin/setup-wp.sh` (WP-CLI) to create the 17 Pages,
+    assign templates, rename Shop slug → magazin, flush permalinks
 [ ] Page-by-page visual diff against the live Angular build
 [ ] Mobile breakpoint check (375/390/430px)
 [ ] Lighthouse pass (use the website-optimizer skill) — apply the fallback ladder
