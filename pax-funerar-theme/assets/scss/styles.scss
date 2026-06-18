@@ -1,0 +1,63 @@
+// ============================================================
+// PaxFunerar — theme stylesheet entry point.
+// Compiled to assets/css/style.css:
+//   npx sass --load-path=assets/scss assets/scss/styles.scss \
+//       assets/css/style.css --style=compressed
+//
+// Same SCSS tokens + same rules as the Angular build. Shared components
+// keep their global class names; page styles are scoped under a body class
+// (.page-*) to reproduce Angular's per-component view encapsulation, since
+// several pages reuse class names (.section-title, .page-hero, .cta-inner…)
+// with different values.
+// ============================================================
+
+@use 'variables' as *;
+@use 'typography';
+@use 'animations';
+@use 'utilities';
+
+// Shared components (global — unique class names)
+@use 'components/navbar';
+@use 'components/footer';
+@use 'components/phone-sticky';
+@use 'components/cookie-consent';
+@use 'components/service-card';
+@use 'components/service-detail-modal';
+@use 'components/faq-accordion';
+
+// Pages (scoped under .page-* body classes)
+@use 'pages/home';
+@use 'pages/servicii';
+@use 'pages/service-detail';
+@use 'pages/contact';
+@use 'pages/despre';
+@use 'pages/magazin';
+
+// ---- Global base resets (ported verbatim from src/styles.scss) ----
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 375px;
+  background: var(--color-bg-primary);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+}
+
+// [hidden] must beat component display:flex (cookie banner, cart badge, etc.)
+[hidden] {
+  display: none !important;
+}

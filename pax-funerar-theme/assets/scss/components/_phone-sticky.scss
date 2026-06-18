@@ -1,0 +1,61 @@
+@use 'variables' as *;
+
+.phone-sticky {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+
+  @media (min-width: $bp-lg) {
+    right: var(--space-6);
+    bottom: var(--space-6);
+  }
+}
+
+.sticky-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  color: #fff;
+
+  &.phone {
+    background: var(--color-accent);
+    color: #1a1a1a;
+  }
+
+  &.whatsapp {
+    background: #25d366;
+  }
+}
+
+// Mobile: round icon-only buttons
+.sticky-label {
+  display: none;
+}
+
+// Desktop: labeled pills, right-aligned
+@media (min-width: $bp-lg) {
+  .phone-sticky {
+    align-items: flex-end;
+  }
+
+  .sticky-btn {
+    width: auto;
+    padding-inline: var(--space-6);
+  }
+
+  .sticky-label {
+    display: inline;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+}
