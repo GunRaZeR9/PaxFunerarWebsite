@@ -1,0 +1,19 @@
+/*
+Theme Name: PaxFunerar
+Theme URI: https://paxfunerar.ro/
+Author: PaxFunerar
+Author URI: https://paxfunerar.ro/
+Description: Casa Funerară PAX — plain PHP theme ported from the Angular build. Dark + gold premium funeral-services theme with WooCommerce shop. Same SCSS tokens, same anime.js interactions, no page builder, no purchased plugins.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.5
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pax-funerar
+WC requires at least: 8.0
+WC tested up to: 9.0
+
+This file is REQUIRED by WordPress for the theme header only.
+The actual compiled styles ship from assets/css/style.css (see functions.php).
+*/
