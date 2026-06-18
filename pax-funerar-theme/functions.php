@@ -25,6 +25,7 @@ require_once PAX_DIR . '/inc/content-data.php';
 require_once PAX_DIR . '/inc/legal-data.php';
 require_once PAX_DIR . '/inc/service-meta.php';
 require_once PAX_DIR . '/inc/contact-form.php';
+require_once PAX_DIR . '/inc/woocommerce.php';
 
 /* -------------------------------------------------------------------------
  * Theme support

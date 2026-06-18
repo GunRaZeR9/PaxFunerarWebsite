@@ -6,13 +6,21 @@ import { slideUpIn, slideDownOut, fadeIn } from './animations.js';
 
 let openModalEl = null;
 
+const PANEL = '.modal-panel, .product-modal-panel';
+
 function openModal(modal) {
   if (!modal) return;
   openModalEl = modal;
   modal.hidden = false;
   document.body.style.overflow = 'hidden';
-  const panel = modal.querySelector('.modal-panel');
+  const panel = modal.querySelector(PANEL);
   const overlay = modal.querySelector('.modal-overlay');
+  // Product quick-view is centered via transform → must NOT be translateY-animated
+  // (the magazin component never animated it). Service modal slides up.
+  if (modal.hasAttribute('data-modal-static')) {
+    if (panel) panel.focus();
+    return;
+  }
   requestAnimationFrame(() => {
     slideUpIn(panel);
     fadeIn(overlay, 200);
@@ -22,7 +30,13 @@ function openModal(modal) {
 
 function closeModal(modal) {
   if (!modal) return;
-  const panel = modal.querySelector('.modal-panel');
+  if (modal.hasAttribute('data-modal-static')) {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    openModalEl = null;
+    return;
+  }
+  const panel = modal.querySelector(PANEL);
   slideDownOut(panel, () => {
     modal.hidden = true;
     document.body.style.overflow = '';
